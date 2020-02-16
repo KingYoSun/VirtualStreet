@@ -15,7 +15,6 @@ jobs:
             - node_modules
       - run: npm run lint
       - run: npm run test
-
 orbs:
   aws-ecr: circleci/aws-ecr@6.5.0
   aws-ecs: circleci/aws-ecs@0.0.10
@@ -25,7 +24,7 @@ workflows:
       - build
       - aws-ecr/build-and-push-image:
           requires:
-            -build
+            - build
           filters:
             branches:
               only: master
