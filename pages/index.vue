@@ -6,7 +6,7 @@
         VirtualStreet
       </h1>
       <h2 class="subtitle">
-        Virtual Street Nuxt.js project circleci test
+        Virtual Street Nuxt.js project
       </h2>
       <div class="links">
         <a
