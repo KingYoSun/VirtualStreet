@@ -1,19 +1,19 @@
 version: 2.1
 orbs:
-aws-ecr: circleci/aws-ecr@6.5.0
-aws-ecs: circleci/aws-ecs@0.0.10
+  aws-ecr: circleci/aws-ecr@6.5.0
+  aws-ecs: circleci/aws-ecs@0.0.10
 workflows:
-    build_and_push_image:
-        jobs:
-            - aws-ecr/build-and-push-image:
-                region: AWS_REGION
-                account-url: AWS_ECR_ACCOUNT_URL
-                repo: 'VirtualStreet'　# GitHubのリポジトリ名
-                tag: "${CIRCLE_SHA1}"
-            - aws-ecs/deploy-service-update:
-                requires:
-                    - aws-ecr/build-and-push-image
-                family: 'first-run-task-definition'　# ECSのタスク定義名
-                cluster-name: 'virtual-street-dev'　# ECSクラスター名
-                service-name: 'virtual-street-dev-service'　# ECSのサービス名
-                container-image-name-updates: 'container=virtual-street-dev,tag=${CIRCLE_SHA1}'　# タスク定義で指定しているコンテナ名
+  build_and_push_image:
+    jobs:
+      - aws-ecr/build-and-push-image:
+        region: AWS_REGION
+        account-url: AWS_ECR_ACCOUNT_URL
+        repo: 'VirtualStreet'
+        tag: "${CIRCLE_SHA1}"
+      - aws-ecs/deploy-service-update:
+        requires:
+          - aws-ecr/build-and-push-image
+        family: 'first-run-task-definition'
+        cluster-name: 'virtual-street-dev'
+        service-name: 'virtual-street-dev-service'
+        container-image-name-updates: 'container=virtual-street-dev,tag=${CIRCLE_SHA1}'
