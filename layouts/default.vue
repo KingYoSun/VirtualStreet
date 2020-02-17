@@ -38,6 +38,11 @@ html {
   margin: 0;
 }
 
+.wrapper{
+  max-width: 1340px;
+  margin: 0 auto;
+}
+
 .button--green {
   display: inline-block;
   border-radius: 4px;

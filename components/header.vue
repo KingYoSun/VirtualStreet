@@ -1,10 +1,12 @@
 <template>
   <div class="header-wrapper">
-    <div class="header">
-      <h1>Sample Header!</h1>
-      <ul class="menu">
-        <li>メニュー1</li>
-      </ul>
+    <div class="wrapper">
+      <div class="header">
+        <h1>Sample Header!</h1>
+        <ul class="menu">
+          <li>メニュー1</li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -17,8 +19,6 @@
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  max-width: 1340px;
-  margin: 0 auto;
 }
 .header h1{
   width: auto;

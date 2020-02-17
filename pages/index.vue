@@ -1,13 +1,15 @@
 <template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        Top Page
-      </h1>
-      <h2 class="subtitle">
-        Virtual Street Nuxt.js project
-      </h2>
+  <div class="wrapper">
+    <div class="container">
+      <div>
+        <logo />
+        <h1 class="title">
+          Top Page
+        </h1>
+        <h2 class="subtitle">
+          Virtual Street Nuxt.js project
+        </h2>
+      </div>
     </div>
   </div>
 </template>
@@ -40,7 +42,6 @@ export default {
 
 <style>
 .container {
-  margin: 0 auto;
   min-height: 100vh;
   display: flex;
   justify-content: center;
