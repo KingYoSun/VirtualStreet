@@ -1,8 +1,22 @@
 <template>
   <div>
+    <ex-header />
     <nuxt />
+    <ex-footer />
   </div>
 </template>
+
+<script>
+import ExHeader from '~/components/header.vue'
+import ExFooter from '~/components/footer.vue'
+
+export default {
+  components: {
+    ExHeader,
+    ExFooter
+  }
+}
+</script>
 
 <style>
 html {
