@@ -2,25 +2,19 @@
   <div class="wrapper">
     <div class="container">
       <div>
-        <logo />
-        <h1 class="title">
-          Top Page
-        </h1>
-        <h2 class="subtitle">
-          Virtual Street Nuxt.js project
-        </h2>
+        <tweets-list />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import TweetsList from '~/components/tweetsList.vue'
 
 export default {
   layout: 'default',
   components: {
-    Logo
+    TweetsList
   },
   data () {
     return {
@@ -44,9 +38,9 @@ export default {
 .container {
   min-height: 100vh;
   display: flex;
-  justify-content: center;
+  /*justify-content: center;
   align-items: center;
-  text-align: center;
+  text-align: center;*/
 }
 
 .title {

@@ -1,0 +1,3 @@
+aws-exports.js
+
+npm install aws-amplify aws-amplify-vue

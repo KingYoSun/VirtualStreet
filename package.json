@@ -13,8 +13,11 @@
     "test": "jest"
   },
   "dependencies": {
+    "@nuxtjs/axios": "^5.3.6",
+    "aws-amplify": "^2.2.5",
+    "aws-amplify-vue": "^1.1.4",
     "nuxt": "^2.0.0",
-    "@nuxtjs/axios": "^5.3.6"
+    "vue-infinite-loading": "^2.4.4"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^2.0.0",
