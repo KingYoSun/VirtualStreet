@@ -4,9 +4,11 @@
     <div v-for="(tweet, $index) in tweets" :key="$index">
       <p>tweet: {{ tweet }}</p>
     </div>
-    <infinite-loading @infinite="infiniteHandler">
-      <div slot="no-result">No result!</div>
-    </infinite-loading>
+    <client-only>
+      <infinite-loading @infinite="infiniteHandler">
+        <div slot="no-result">No result!</div>
+      </infinite-loading>
+    </client-only>
   </div>
 </template>
 
