@@ -28,8 +28,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    { src: '~/plugins/amplify.js', ssr: false },
-    { src: '~/plugins/infiniteloading', ssr: false }
+    { src: '~/plugins/amplify.js', mode: 'client' },
+    { src: '~/plugins/infiniteloading', mode: 'client' }
   ],
   /*
   ** Nuxt.js dev-modules
