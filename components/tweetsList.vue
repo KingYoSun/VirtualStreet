@@ -2,7 +2,7 @@
   <div>
     <div>VRCSnap!</div>
     <div v-for="(tweet, $index) in tweets" :key="$index">
-      <p>tweet: {{ tweet }}</p>
+      <p :id="tweet.id">tweetID: {{ tweet.id }}</p>
     </div>
     <client-only>
       <infinite-loading @infinite="infiniteHandler">
@@ -59,7 +59,9 @@ export default {
         API.graphql(graphqlOperation(TweetsListQuery))
           .then((response) => {
             this.page += 1
-            this.tweets.push(response.data.listTweet2rekognitions.items)
+            for (const item of response.data.listTweet2rekognitions.items) {
+              this.tweets.push(item)
+            }
             this.nextToken = response.data.listTweet2rekognitions.nextToken
             $state.loaded()
           })
