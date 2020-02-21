@@ -13,9 +13,10 @@
 
 <style>
 .header-wrapper{
-  background-color: #EEE;
+  background-color: transparent;
 }
 .header {
+  color: white;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;

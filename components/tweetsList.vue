@@ -1,12 +1,14 @@
 <template>
   <div>
-    <div>VRCSnap!</div>
-    <div v-for="(tweet, $index) in tweets" :key="$index">
-      <embed-tweet :id="tweet.id"></embed-tweet>
+    <h5>VRCSnap!はTwitterからVRChatのスナップっぽい画像を収集するサイトです</h5>
+    <div v-for="(tweet, $index) in tweets" :key="$index" class="tweet-area">
+      <embed-tweet :tweet="tweet"></embed-tweet>
     </div>
     <client-only>
-      <infinite-loading @infinite="infiniteHandler">
-        <div slot="no-result">No result!</div>
+      <infinite-loading :identifier="infiniteId" @infinite="infiniteHandler">
+        <div slot="no-result">
+          No result!
+        </div>
       </infinite-loading>
     </client-only>
   </div>
@@ -36,8 +38,12 @@ export default {
       page: 1,
       tweets: [],
       nextToken: null,
-      searchDay: todayUnix
+      searchDay: todayUnix,
+      infiniteId: 0
     }
+  },
+  mounted () {
+    this.infiniteId += 1
   },
   methods: {
     infiniteHandler ($state) {
@@ -52,7 +58,9 @@ export default {
           listTweet2rekognitions(updated_at_date: ${this.searchDay}, limit: 20, nextToken: ${this.nextToken}) {
             items {
               id
+              user_name
               user_screen_name
+              user_profile_image
               img
             }
             nextToken

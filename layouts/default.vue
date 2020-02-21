@@ -19,6 +19,10 @@ export default {
 </script>
 
 <style>
+:root {
+  --background-color: #0F4C81;
+}
+
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -29,6 +33,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+  background-color: var(--background-color);
 }
 
 *,
@@ -41,6 +46,10 @@ html {
 .wrapper{
   max-width: 1340px;
   margin: 0 auto;
+}
+
+h3 {
+  font-size: 0.85em;
 }
 
 .button--green {
