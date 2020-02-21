@@ -2,7 +2,7 @@
   <div>
     <div>VRCSnap!</div>
     <div v-for="(tweet, $index) in tweets" :key="$index">
-      <p :id="tweet.id">tweetID: {{ tweet.id }}</p>
+      <embed-tweet :id="tweet.id"></embed-tweet>
     </div>
     <client-only>
       <infinite-loading @infinite="infiniteHandler">
@@ -12,9 +12,11 @@
   </div>
 </template>
 
+<script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>
 <script>
-import { API, graphqlOperation } from 'aws-amplify'
 import InfiniteLoading from 'vue-infinite-loading'
+import { API, graphqlOperation } from 'aws-amplify'
+import EmbedTweet from '~/components/parts/tweet.vue'
 
 const date = new Date()
 const year = date.getUTCFullYear()
@@ -25,13 +27,13 @@ const todayUnix = Date.parse(today) / 1000
 
 export default {
   name: 'TweetsList',
-  component: {
+  components: {
+    EmbedTweet,
     InfiniteLoading
   },
   data () {
     return {
       page: 1,
-      loading: false,
       tweets: [],
       nextToken: null,
       searchDay: todayUnix
