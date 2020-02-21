@@ -77,12 +77,12 @@ export default {
   width: 20em;
   white-space: nowrap;
   overflow: hidden;
-  color: white;
+  color: var(--text-color-main);
   text-overflow: ellipsis;
 }
 
 .author-screen-name {
-  color: gray;
+  color: var(--text-color-sub);
 }
 
 .twitter-icon {

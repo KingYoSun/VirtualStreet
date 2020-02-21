@@ -16,7 +16,7 @@
   background-color: transparent;
 }
 .header {
-  color: white;
+  color: var(--text-color-main);
   display: flex;
   flex-wrap: nowrap;
   align-items: center;

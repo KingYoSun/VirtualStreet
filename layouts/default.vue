@@ -21,6 +21,8 @@ export default {
 <style>
 :root {
   --background-color: #0F4C81;
+  --text-color-main: white;
+  --text-color-sub: gray;
 }
 
 html {
