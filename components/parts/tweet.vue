@@ -1,21 +1,30 @@
 <template>
-  <div :id="'tweet-container-' + tweet.id" class="tweet-box">
-    <div class="author-box">
-      <div class="author-icon">
-        <a :href="'https://twitter.com/' + tweet.user_screen_name" target="_blank">
-          <img class="profile-image" :src="tweet.user_profile_image">
-        </a>
-      </div>
-      <div class="author-info">
-          <a :href="'https://twitter.com/' + tweet.user_screen_name" class="author-link">
+  <div :id="'tweet-box-' + tweet.id" class="tweet-box">
+    <div ref="authorBox" class="author-box">
+      <div class="author-table">
+        <div class="author-icon">
+          <a :href="'https://twitter.com/' + tweet.user_screen_name" target="_blank">
+            <img class="profile-image" :src="tweet.user_profile_image">
+          </a>
+        </div>
+        <div class="author-info">
+          <a :href="'https://twitter.com/' + tweet.user_screen_name" class="author-link" target="_blank">
             <h3 class="author-name">{{ tweet.user_name }}</h3>
             <h5 class="author-screen-name">@{{ tweet.user_screen_name }}</h5>
           </a>
-        </h3>
+          </h3>
+        </div>
       </div>
       <div class="twitter-icon">
         <twitter-icon />
       </div>
+    </div>
+    <div class="images-container" ref="imagesContainer">
+      <a :href="'https://twitter.com/' + tweet.user_screen_name + '/status/' + tweet.id" target="_blank">
+        <div v-for="image in tweet.img" :key="image.id" class="each-image">
+          <img :id="'image-' + image.id" :src="image.url" @load="setGridSpan(image.id)">
+        </div>
+      </a>
     </div>
   </div>
 </template>
@@ -25,15 +34,63 @@ import TwitterIcon from '~/components/parts/twitterIcon.vue'
 
 export default {
   name: 'EmbedTweet',
+  components: {
+    TwitterIcon
+  },
   props: {
     tweet: Object
   },
-  components: {
-    TwitterIcon
+  data () {
+    return {
+      boxHeight: 0
+    }
   },
   mounted () {
     if (!this.tweet.user_profile_image) {
       this.tweet.user_profile_image = 'https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png'
+    }
+    const str = this.tweet.img
+    this.tweet.img = JSON.parse(str.replace(/\\\\/g, ''))
+    this.boxHeight = this.$refs.authorBox.offsetHeight
+    window.addEventListener('resize', this.setGridSpanResize)
+  },
+  beforeDestroy () {
+    window.removeEventListener('resize', this.setGridSpanResize)
+  },
+  methods: {
+    setGridSpan ($id) {
+      const image = document.getElementById('image-' + String($id))
+      this.boxHeight += image.offsetHeight
+      const tweetContainer = document.getElementById('tweet-container-' + String(this.tweet.id))
+      tweetContainer.setAttribute('style', `height: ${this.boxHeight}px;grid-row: span ${Math.ceil(((this.boxHeight + 10) / (20 + 10)) + 1)};`)
+    },
+    setGridSpanResize () {
+      const tweetBoxHeight = this.$refs.authorBox.offsetHeight + this.$refs.imagesContainer.offsetHeight
+      const tweetContainer = document.getElementById('tweet-container-' + String(this.tweet.id))
+      tweetContainer.setAttribute('style', `height: ${tweetBoxHeight}px;grid-row: span ${Math.ceil(((tweetBoxHeight + 10) / (20 + 10)) + 1)};`)
+    },
+    getImageSize (img) {
+      const size = {
+        width: 0,
+        height: 0
+      }
+      const element = new Image()
+      element.src = img
+      size.width = element.width
+      size.height = element.height
+      return size
+    },
+    mergeBoundingBox (img) {
+      const mergedBox = {
+        Height: 0,
+        Left: 1,
+        Top: 1,
+        Width: 0
+      }
+      for (box of img.bounding_box) {
+        mergedBox.Left = (mergedBox.Left > box.Left) ? box.Left : mergedBox.Left
+        mergedBox.Top = (mergedBox.Top > box.Top) ? box.Top : mergedBox.Top
+      }
     }
   }
 }
@@ -41,6 +98,7 @@ export default {
 
 <style>
 .tweet-box {
+  padding: 10px;
   border-radius: 15px;
   margin: 20px 20px;
   background: var(--background-color);
@@ -54,6 +112,12 @@ export default {
 }
 
 .author-box {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.author-table {
   display: table;
   border-collapse: separate;
   border-spacing: 4px 0;
@@ -86,7 +150,22 @@ export default {
 }
 
 .twitter-icon {
+  margin-left: auto;
   width: 40px;
   height: 40px;
+  min-width: 30px;
+  min-height: 30px;
+}
+
+.images-container {
+  display: inline-block;
+}
+
+.each-image {
+  display: inline;
+}
+
+.each-image img {
+  width: 100%;
 }
 </style>

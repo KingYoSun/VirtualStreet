@@ -3,16 +3,18 @@
     <div class="main-description">
       <h5>VRCSnap!はTwitterからVRChatのスナップっぽい画像を収集するサイトです</h5>
     </div>
-    <div v-for="(tweet, $index) in tweets" :key="$index" class="tweet-area">
-      <embed-tweet :tweet="tweet"></embed-tweet>
+    <div class="tweet-list">
+      <div v-for="(tweet, $index) in tweets" :id="'tweet-container-' + tweet.id" :key="$index">
+        <embed-tweet :tweet="tweet"></embed-tweet>
+      </div>
+      <client-only>
+        <infinite-loading :identifier="infiniteId" @infinite="infiniteHandler">
+          <div slot="no-result">
+            No result!
+          </div>
+        </infinite-loading>
+      </client-only>
     </div>
-    <client-only>
-      <infinite-loading :identifier="infiniteId" @infinite="infiniteHandler">
-        <div slot="no-result">
-          No result!
-        </div>
-      </infinite-loading>
-    </client-only>
   </div>
 </template>
 
@@ -89,5 +91,12 @@ export default {
 <style>
 .main-description {
   color: var(--text-color-main);
+}
+
+.tweet-list {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-auto-rows: 20px;
 }
 </style>
