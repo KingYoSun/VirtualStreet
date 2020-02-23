@@ -112,7 +112,7 @@ export default {
 }
 
 .author-name {
-  width: 20em;
+  width: 10em;
   white-space: nowrap;
   overflow: hidden;
   color: var(--text-color-main);

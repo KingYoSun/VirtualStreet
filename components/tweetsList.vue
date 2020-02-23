@@ -59,7 +59,7 @@ export default {
           this.nextToken = `"${this.nextToken}"`
         }
         const TweetsListQuery = `query list {
-          listTweet2rekognitions(updated_at_date: ${this.searchDay}, limit: 20, nextToken: ${this.nextToken}) {
+          listTweet2rekognitions(updated_at_date: ${this.searchDay}, limit: 10, nextToken: ${this.nextToken}) {
             items {
               id
               user_name
@@ -96,7 +96,7 @@ export default {
 .tweet-list {
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-auto-rows: 20px;
 }
 </style>
