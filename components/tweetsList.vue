@@ -7,14 +7,14 @@
       <div v-for="(tweet, $index) in tweets" :id="'tweet-container-' + tweet.id" :key="$index">
         <embed-tweet :tweet="tweet"></embed-tweet>
       </div>
-      <client-only>
-        <infinite-loading :identifier="infiniteId" @infinite="infiniteHandler">
-          <div slot="no-result">
-            No result!
-          </div>
-        </infinite-loading>
-      </client-only>
     </div>
+    <client-only>
+      <infinite-loading :identifier="infiniteId" @infinite="infiniteHandler">
+        <div slot="no-result">
+          No result!
+        </div>
+      </infinite-loading>
+    </client-only>
   </div>
 </template>
 
