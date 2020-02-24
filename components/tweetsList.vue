@@ -68,6 +68,8 @@ export default {
               user_screen_name
               user_profile_image
               timestamp
+              retweet
+              favorite
               img
             }
             nextToken

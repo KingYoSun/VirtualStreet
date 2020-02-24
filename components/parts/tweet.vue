@@ -16,6 +16,10 @@
             <a :href="'https://twitter.com/' + tweet.user_screen_name + '/status/' + tweet.id" class="time-lag" target="_blank" title="Twitterで見る">
               <h5>{{ timeLag }}{{ timeLagScale }}</h5>
             </a>
+            <a :href="'https://twitter.com/intent/retweet?tweet_id=' + tweet.id" class="retweet-btn">
+              <retweet-icon />
+              <h5>{{ tweet.retweet }}</h5>
+            </a>
           </div>
         </div>
       </div>
@@ -35,12 +39,14 @@
 
 <script>
 import TwitterIcon from '~/components/parts/twitterIcon.vue'
+import RetweetIcon from '~/components/parts/retweetIcon.vue'
 import ImgCanvas from '~/components/parts/imgCanvas.vue'
 
 export default {
   name: 'EmbedTweet',
   components: {
     TwitterIcon,
+    RetweetIcon,
     ImgCanvas
   },
   props: {
@@ -53,7 +59,9 @@ export default {
           timestamp: 0,
           user_name: '',
           user_screen_name: '',
-          user_profile_image: 'https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png'
+          user_profile_image: 'https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png',
+          retweet: 0,
+          favorite: 0
         }
       }
     },
@@ -157,9 +165,33 @@ export default {
   color: var(--text-color-sub);
 }
 
+.author-info-data {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
 .time-lag {
   text-decoration: none;
   color: var(--text-color-sub);
+  margin-right: 6px;
+}
+
+.retweet-btn {
+  text-decoration: none;
+  color: var(--text-color-sub);
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: center;
+}
+
+.retweet-btn h5 {
+  margin-top: 2px;
+}
+
+.retweet-icon {
+  margin: 2px;
+  width: 17px;
+  height: 17px;
 }
 
 .twitter-icon {
