@@ -70,6 +70,7 @@ export default {
               timestamp
               retweet
               favorite
+              text
               img
             }
             nextToken

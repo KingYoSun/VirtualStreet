@@ -67,7 +67,8 @@ export default {
           user_screen_name: '',
           user_profile_image: 'https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png',
           retweet: 0,
-          favorite: 0
+          favorite: 0,
+          text: ''
         }
       }
     },
