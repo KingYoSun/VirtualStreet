@@ -16,11 +16,11 @@
             <a :href="'https://twitter.com/' + tweet.user_screen_name + '/status/' + tweet.id" class="time-lag" target="_blank" title="Twitterで見る">
               <h5>{{ timeLag }}{{ timeLagScale }}</h5>
             </a>
-            <a :href="'https://twitter.com/intent/retweet?tweet_id=' + tweet.id" class="retweet-btn">
+            <a :href="'https://twitter.com/intent/retweet?tweet_id=' + tweet.id" class="retweet-btn" target="_blank" title="リツイートする">
               <retweet-icon />
               <h5>{{ tweet.retweet }}</h5>
             </a>
-            <a :href="'https://twitter.com/intent/like?tweet_id=' + tweet.id" class="favorite-btn">
+            <a :href="'https://twitter.com/intent/like?tweet_id=' + tweet.id" class="favorite-btn" target="_blank" title="いいねする">
               <favorite-icon />
               <h5>{{ tweet.favorite }}</h5>
             </a>
@@ -167,8 +167,16 @@ export default {
   text-overflow: ellipsis;
 }
 
+.author-name:hover {
+  color: var(--text-color-main-hover);
+}
+
 .author-screen-name {
   color: var(--text-color-sub);
+}
+
+.author-screen-name:hover {
+  color: var(--text-color-sub-hover);
 }
 
 .author-info-data {
@@ -182,12 +190,24 @@ export default {
   margin-right: 6px;
 }
 
+.time-lag:hover h5 {
+  color: var(--text-color-sub-hover);
+}
+
 .retweet-btn {
   text-decoration: none;
   color: var(--text-color-sub);
   display: flex;
   flex-wrap: nowrap;
   align-content: center;
+}
+
+.retweet-btn:hover h5 {
+  color: var(--retweet-color);
+}
+
+.retweet-btn:hover .st0 {
+  fill: var(--retweet-color);
 }
 
 .retweet-btn h5 {
@@ -207,6 +227,14 @@ export default {
   display: flex;
   flex-wrap: nowrap;
   align-content: center;
+}
+
+.favorite-btn:hover h5 {
+  color: var(--favorite-color);
+}
+
+.favorite-btn:hover .st0 {
+  fill: var(--favorite-color);
 }
 
 .favorite-btn h5 {

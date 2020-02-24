@@ -22,7 +22,11 @@ export default {
 :root {
   --background-color: #0F4C81;
   --text-color-main: white;
+  --text-color-main-hover: #bdbdbd;
   --text-color-sub: gray;
+  --text-color-sub-hover: #bdbdbd;
+  --retweet-color: #1dba65;
+  --favorite-color: #d72a61;
 }
 
 html {
@@ -55,32 +59,7 @@ h3 {
   font-size: 0.85em;
 }
 
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+img:hover {
+  opacity: 0.7;
 }
 </style>

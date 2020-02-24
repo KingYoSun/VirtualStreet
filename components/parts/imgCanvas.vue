@@ -124,4 +124,8 @@ export default {
 canvas {
   width: 100%;
 }
+
+canvas:hover {
+  opacity: 0.7;
+}
 </style>
