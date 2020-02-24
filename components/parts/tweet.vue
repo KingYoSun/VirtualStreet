@@ -20,6 +20,10 @@
               <retweet-icon />
               <h5>{{ tweet.retweet }}</h5>
             </a>
+            <a :href="'https://twitter.com/intent/like?tweet_id=' + tweet.id" class="favorite-btn">
+              <favorite-icon />
+              <h5>{{ tweet.favorite }}</h5>
+            </a>
           </div>
         </div>
       </div>
@@ -40,6 +44,7 @@
 <script>
 import TwitterIcon from '~/components/parts/twitterIcon.vue'
 import RetweetIcon from '~/components/parts/retweetIcon.vue'
+import FavoriteIcon from '~/components/parts/favoriteIcon.vue'
 import ImgCanvas from '~/components/parts/imgCanvas.vue'
 
 export default {
@@ -47,6 +52,7 @@ export default {
   components: {
     TwitterIcon,
     RetweetIcon,
+    FavoriteIcon,
     ImgCanvas
   },
   props: {
@@ -192,6 +198,25 @@ export default {
   margin: 2px;
   width: 17px;
   height: 17px;
+}
+
+.favorite-btn {
+  margin-left: 6px;
+  text-decoration: none;
+  color: var(--text-color-sub);
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: center;
+}
+
+.favorite-btn h5 {
+  margin-top: 2px;
+}
+
+.favorite-icon {
+  margin: 4px 2px 4px 2px;
+  width: 13px;
+  height: 13px;
 }
 
 .twitter-icon {
