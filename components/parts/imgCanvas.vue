@@ -1,6 +1,6 @@
 <template>
   <div :id="'canvas-container-' + image.id" class="canvas-container">
-    <canvas :id="'canvas-' + image.id"></canvas>
+    <canvas :id="'canvas-' + image.id" />
   </div>
 </template>
 
@@ -8,7 +8,17 @@
 export default {
   name: 'ImgCanvas',
   props: {
-    image: Object
+    image: {
+      type: Object,
+      default () {
+        return {
+          bounding_box: {},
+          id: '0',
+          labels: [],
+          url: ''
+        }
+      }
+    }
   },
   data () {
     return {

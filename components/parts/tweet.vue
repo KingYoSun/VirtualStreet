@@ -40,7 +40,23 @@ export default {
     ImgCanvas
   },
   props: {
-    tweet: Object
+    tweet: {
+      type: Object,
+      default () {
+        return {
+          id: '0',
+          img: '',
+          timestamp: 0,
+          user_name: '',
+          user_screen_name: '',
+          user_profile_image: 'https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png'
+        }
+      }
+    },
+    nowUnix: {
+      type: Number,
+      default: 0
+    }
   },
   data () {
     return {
@@ -48,9 +64,6 @@ export default {
     }
   },
   mounted () {
-    if (!this.tweet.user_profile_image) {
-      this.tweet.user_profile_image = 'https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png'
-    }
     this.images = JSON.parse(this.tweet.img)
     window.addEventListener('resize', this.setGridSpanResize)
   },
@@ -112,7 +125,7 @@ export default {
 }
 
 .author-name {
-  width: 10em;
+  width: 12em;
   white-space: nowrap;
   overflow: hidden;
   color: var(--text-color-main);

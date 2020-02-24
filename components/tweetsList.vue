@@ -5,7 +5,7 @@
     </div>
     <div class="tweet-list">
       <div v-for="(tweet, $index) in tweets" :id="'tweet-container-' + tweet.id" :key="$index">
-        <embed-tweet :tweet="tweet"></embed-tweet>
+        <embed-tweet :tweet="tweet" :now-unix="nowUnix" />
       </div>
     </div>
     <client-only>
@@ -25,6 +25,7 @@ import { API, graphqlOperation } from 'aws-amplify'
 import EmbedTweet from '~/components/parts/tweet.vue'
 
 const date = new Date()
+const nowUnix = date.getTime()
 const year = date.getUTCFullYear()
 const month = date.getUTCMonth() + 1
 const day = date.getUTCDate()
@@ -43,6 +44,7 @@ export default {
       tweets: [],
       nextToken: null,
       searchDay: todayUnix,
+      nowUnix: nowUnix,
       infiniteId: 0
     }
   },
@@ -65,6 +67,7 @@ export default {
               user_name
               user_screen_name
               user_profile_image
+              timestamp
               img
             }
             nextToken
