@@ -31,6 +31,11 @@
         <twitter-icon />
       </div>
     </div>
+    <div ref="textContainer" class="text-container">
+      <p :id="'text-' + tweet.id" class="text">
+        {{ tweet.text }}
+      </p>
+    </div>
     <div ref="imagesContainer" class="images-container">
       <a :href="'https://twitter.com/' + tweet.user_screen_name + '/status/' + tweet.id" target="_blank">
         <div v-for="image in images" :key="image.id" class="each-image">
@@ -87,6 +92,8 @@ export default {
   mounted () {
     this.images = JSON.parse(this.tweet.img)
     this.calcTimeLag()
+    this.cutText()
+    this.tagLink()
     window.addEventListener('resize', this.setGridSpanResize)
   },
   beforeDestroy () {
@@ -106,11 +113,40 @@ export default {
         this.timeLagScale = '分前'
       }
     },
+    cutText () {
+      const cutTag = /#VRChat|#VRC|#vrchat|#VRchat|#VRCSnap|#VRCSnap!/g
+      const regURL = /https?:\/\/[a-zA-Z0-9.\-_@:/~?%&;=+#',()*!]+/g
+      this.tweet.text = this.tweet.text.replace(cutTag, '')
+      const urlList = this.tweet.text.match(regURL) || []
+      if (urlList.length > 0) {
+        const cutLink = urlList.pop()
+        this.tweet.text = this.tweet.text.replace(cutLink, '')
+        if (urlList.length > 0) {
+          for (const url of urlList) {
+            const urlLink = '<a href="' + url + '" target="_blank">' + url + '</a>'
+            const elemText = document.getElementById('text-' + this.tweet.id)
+            elemText.innerHTML = this.tweet.text.replace(url, urlLink)
+          }
+        }
+      }
+    },
+    tagLink () {
+      const regTag = /[#＃][Ａ-Ｚａ-ｚA-Za-z一-鿆0-9０-９ぁ-ヶｦ-ﾟー._-]+/g
+      const tagList = this.tweet.text.match(regTag) || []
+      if (tagList.length > 0) {
+        for (const tag of tagList) {
+          const aTag = tag.replace('#', '%23')
+          const tagLink = '<a href="https://twitter.com/search/' + aTag + '" target="_blank">' + tag + '</a>'
+          const elemText = document.getElementById('text-' + this.tweet.id)
+          elemText.innerHTML = this.tweet.text.replace(tag, tagLink)
+        }
+      }
+    },
     recieveHeight () {
       this.setGridSpanResize()
     },
     setGridSpanResize () {
-      const tweetBoxHeight = this.$refs.authorBox.offsetHeight + this.$refs.imagesContainer.offsetHeight
+      const tweetBoxHeight = this.$refs.authorBox.offsetHeight + this.$refs.imagesContainer.offsetHeight + this.$refs.textContainer.offsetHeight
       const tweetContainer = document.getElementById('tweet-container-' + String(this.tweet.id))
       tweetContainer.setAttribute('style', `height: ${tweetBoxHeight}px;grid-row: span ${Math.ceil(((tweetBoxHeight + 10) / (20 + 10)) + 1)};`)
     }
@@ -255,5 +291,25 @@ export default {
   height: 40px;
   min-width: 30px;
   min-height: 30px;
+}
+
+.text-container {
+  width: 100%;
+  margin-bottom: 4px;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.text {
+  color: var(--text-color-main);
+  font-size: 0.8em;
+}
+
+.text a {
+  text-decoration: none;
+  color: var(--text-color-main);
+}
+
+.text a:hover{
+  color: var(--text-color-main-hover);
 }
 </style>
