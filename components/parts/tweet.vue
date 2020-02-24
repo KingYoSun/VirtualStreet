@@ -8,11 +8,15 @@
           </a>
         </div>
         <div class="author-info">
-          <a :href="'https://twitter.com/' + tweet.user_screen_name" class="author-link" target="_blank">
+          <a :href="'https://twitter.com/' + tweet.user_screen_name" class="author-link" target="_blank" title="Twitterでユーザーを見る">
             <h3 class="author-name">{{ tweet.user_name }}</h3>
             <h5 class="author-screen-name">@{{ tweet.user_screen_name }}</h5>
           </a>
-          </h3>
+          <div class="author-info-data">
+            <a :href="'https://twitter.com/' + tweet.user_screen_name + '/status/' + tweet.id" class="time-lag" target="_blank" title="Twitterで見る">
+              <h5>{{ timeLag }}{{ timeLagScale }}</h5>
+            </a>
+          </div>
         </div>
       </div>
       <div class="twitter-icon">
@@ -60,17 +64,33 @@ export default {
   },
   data () {
     return {
-      images: {}
+      images: {},
+      timeLag: 0,
+      timeLagScale: '分前'
     }
   },
   mounted () {
     this.images = JSON.parse(this.tweet.img)
+    this.calcTimeLag()
     window.addEventListener('resize', this.setGridSpanResize)
   },
   beforeDestroy () {
     window.removeEventListener('resize', this.setGridSpanResize)
   },
   methods: {
+    calcTimeLag () {
+      const timeLagUnix = this.nowUnix - this.tweet.timestamp
+      if (timeLagUnix > 86400) {
+        this.timeLag = Math.ceil(timeLagUnix / 86400)
+        this.timeLagScale = '日前'
+      } else if (timeLagUnix > 3600) {
+        this.timeLag = Math.ceil(timeLagUnix / 3600)
+        this.timeLagScale = '時間前'
+      } else if (timeLagUnix > 60) {
+        this.timeLag = Math.ceil(timeLagUnix / 60)
+        this.timeLagScale = '分前'
+      }
+    },
     recieveHeight () {
       this.setGridSpanResize()
     },
@@ -122,6 +142,7 @@ export default {
 
 .author-link {
   text-decoration: none;
+  line-height: 1;
 }
 
 .author-name {
@@ -133,6 +154,11 @@ export default {
 }
 
 .author-screen-name {
+  color: var(--text-color-sub);
+}
+
+.time-lag {
+  text-decoration: none;
   color: var(--text-color-sub);
 }
 

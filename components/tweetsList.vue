@@ -25,7 +25,7 @@ import { API, graphqlOperation } from 'aws-amplify'
 import EmbedTweet from '~/components/parts/tweet.vue'
 
 const date = new Date()
-const nowUnix = date.getTime()
+const nowUnix = Math.floor(date.getTime() / 1000)
 const year = date.getUTCFullYear()
 const month = date.getUTCMonth() + 1
 const day = date.getUTCDate()
