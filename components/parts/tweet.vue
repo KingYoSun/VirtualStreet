@@ -47,10 +47,10 @@
 </template>
 
 <script>
-import TwitterIcon from '~/components/parts/twitterIcon.vue'
-import RetweetIcon from '~/components/parts/retweetIcon.vue'
-import FavoriteIcon from '~/components/parts/favoriteIcon.vue'
-import ImgCanvas from '~/components/parts/imgCanvas.vue'
+import TwitterIcon from '~/components/parts/tweet/twitterIcon.vue'
+import RetweetIcon from '~/components/parts/tweet/retweetIcon.vue'
+import FavoriteIcon from '~/components/parts/tweet/favoriteIcon.vue'
+import ImgCanvas from '~/components/parts/tweet/imgCanvas.vue'
 
 export default {
   name: 'EmbedTweet',
