@@ -114,31 +114,31 @@ export default {
       }
     },
     cutText () {
-      const cutTag = /#VRChat|#VRC|#vrchat|#VRchat|#VRCSnap|#VRCSnap!/g
+      const cutTag = /#VRChat|#VRCSnap|#VRCSnap!|#VRC|/ig
       const regURL = /https?:\/\/[a-zA-Z0-9.\-_@:/~?%&;=+#',()*!]+/g
-      this.tweet.text = this.tweet.text.replace(cutTag, '')
-      const urlList = this.tweet.text.match(regURL) || []
+      const elemText = document.getElementById('text-' + this.tweet.id)
+      elemText.innerHTML = elemText.innerHTML.replace(cutTag, '')
+      const urlList = elemText.innerHTML.match(regURL) || []
       if (urlList.length > 0) {
         const cutLink = urlList.pop()
-        this.tweet.text = this.tweet.text.replace(cutLink, '')
+        elemText.innerHTML = elemText.innerHTML.replace(cutLink, '')
         if (urlList.length > 0) {
           for (const url of urlList) {
             const urlLink = '<a href="' + url + '" target="_blank">' + url + '</a>'
-            const elemText = document.getElementById('text-' + this.tweet.id)
-            elemText.innerHTML = this.tweet.text.replace(url, urlLink)
+            elemText.innerHTML = elemText.innerHTML.replace(url, urlLink)
           }
         }
       }
     },
     tagLink () {
       const regTag = /[#＃][Ａ-Ｚａ-ｚA-Za-z一-鿆0-9０-９ぁ-ヶｦ-ﾟー._-]+/g
-      const tagList = this.tweet.text.match(regTag) || []
+      const elemText = document.getElementById('text-' + this.tweet.id)
+      const tagList = elemText.innerHTML.match(regTag) || []
       if (tagList.length > 0) {
         for (const tag of tagList) {
           const aTag = tag.replace('#', '%23')
           const tagLink = '<a href="https://twitter.com/search/' + aTag + '" target="_blank">' + tag + '</a>'
-          const elemText = document.getElementById('text-' + this.tweet.id)
-          elemText.innerHTML = this.tweet.text.replace(tag, tagLink)
+          elemText.innerHTML = elemText.innerHTML.replace(tag, tagLink)
         }
       }
     },
