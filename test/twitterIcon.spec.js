@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import TwitterIcon from '~/components/parts/twitterIcon.vue'
+import TwitterIcon from '~/components/parts/tweet/twitterIcon.vue'
 
 describe('TwitterIcon', () => {
   test('is a Vue instance', () => {
