@@ -17,6 +17,7 @@
     "aws-amplify": "^2.2.5",
     "aws-amplify-vue": "^1.1.4",
     "nuxt": "^2.0.0",
+    "twitter-text": "^3.0.1",
     "vue-infinite-loading": "^2.4.4"
   },
   "devDependencies": {

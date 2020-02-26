@@ -47,6 +47,7 @@
 </template>
 
 <script>
+import TwitterText from 'twitter-text'
 import TwitterIcon from '~/components/parts/tweet/twitterIcon.vue'
 import RetweetIcon from '~/components/parts/tweet/retweetIcon.vue'
 import FavoriteIcon from '~/components/parts/tweet/favoriteIcon.vue'
@@ -93,7 +94,7 @@ export default {
     this.images = JSON.parse(this.tweet.img)
     this.calcTimeLag()
     this.cutText()
-    this.tagLink()
+    this.autoLink()
     window.addEventListener('resize', this.setGridSpanResize)
   },
   beforeDestroy () {
@@ -122,25 +123,13 @@ export default {
       if (urlList.length > 0) {
         const cutLink = urlList.pop()
         elemText.innerHTML = elemText.innerHTML.replace(cutLink, '')
-        if (urlList.length > 0) {
-          for (const url of urlList) {
-            const urlLink = '<a href="' + url + '" target="_blank">' + url + '</a>'
-            elemText.innerHTML = elemText.innerHTML.replace(url, urlLink)
-          }
-        }
       }
     },
-    tagLink () {
-      const regTag = /[#＃][Ａ-Ｚａ-ｚA-Za-z一-鿆0-9０-９ぁ-ヶｦ-ﾟー._-]+/g
+    autoLink () {
       const elemText = document.getElementById('text-' + this.tweet.id)
-      const tagList = elemText.innerHTML.match(regTag) || []
-      if (tagList.length > 0) {
-        for (const tag of tagList) {
-          const aTag = tag.replace('#', '%23')
-          const tagLink = '<a href="https://twitter.com/search/' + aTag + '" target="_blank">' + tag + '</a>'
-          elemText.innerHTML = elemText.innerHTML.replace(tag, tagLink)
-        }
-      }
+      elemText.innerHTML = TwitterText.autoLink(elemText.innerHTML, {
+        targetBlank: true
+      })
     },
     recieveHeight () {
       this.setGridSpanResize()

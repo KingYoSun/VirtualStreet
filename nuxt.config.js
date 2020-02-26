@@ -32,7 +32,8 @@ export default {
   */
   plugins: [
     { src: '~/plugins/amplify.js', mode: 'client' },
-    { src: '~/plugins/infiniteloading', mode: 'client' }
+    { src: '~/plugins/infiniteloading', mode: 'client' },
+    { src: '~/plugins/twitter-text', mode: 'server' }
   ],
   /*
   ** Nuxt.js dev-modules
