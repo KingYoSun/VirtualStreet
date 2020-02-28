@@ -20,13 +20,17 @@ export default {
 
 <style>
 :root {
-  --background-color: #0F4C81;
-  --text-color-main: white;
+  --background-color: #f3f3f3;
+  --border-highlight: #ffffff;
+  --border-dark: #cfcfcf;
+  --text-color-main: #1f1f1f;
   --text-color-main-hover: #bdbdbd;
   --text-color-sub: gray;
   --text-color-sub-hover: #bdbdbd;
+  --text-color-p: white;
   --retweet-color: #1dba65;
   --favorite-color: #d72a61;
+  --twitter-blue: #1da1f2;
 }
 
 html {

@@ -119,8 +119,8 @@ export default {
 <style>
 .canvas-container {
   width: 100%;
-  height: auto;
 }
+
 canvas {
   width: 100%;
 }

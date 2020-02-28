@@ -10,6 +10,6 @@
   fill: none;
 }
 .cls-2 {
-  fill: white;
+  fill: var(--twitter-blue);
 }
 </style>

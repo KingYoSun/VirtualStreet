@@ -6,7 +6,7 @@
 
 <style>
 .footer {
-  box-shadow: 0px 15px 30px #072139;
+  box-shadow: 0px 15px 30px var(--border-dark);
   color: var(--text-color-main);
   text-align: center;
   background-color: var(--background-color);

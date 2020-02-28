@@ -145,11 +145,9 @@ export default {
 
 <style>
 .tweet-box {
-  padding: 10px;
-  border-radius: 15px;
   margin: 20px 20px;
   background: var(--background-color);
-  box-shadow: 10px 10px 20px #0d416e, -10px -10px 20px #115794;
+  box-shadow: 5px 5px 20px var(--border-dark), -5px -5px 20px var(--border-dark);
 }
 
 .profile-image {
@@ -289,7 +287,7 @@ export default {
 }
 
 .text {
-  color: var(--text-color-main);
+  color: var(--text-color-p);
   font-size: 0.8em;
 }
 
