@@ -24,6 +24,9 @@ export const onCreateTweet2rekognition = /* GraphQL */ `
       updated_at_time
       user_name
       user_screen_name
+      user_profile_image
+      url
+      text
       img
     }
   }
@@ -51,6 +54,9 @@ export const onUpdateTweet2rekognition = /* GraphQL */ `
       updated_at_time
       user_name
       user_screen_name
+      user_profile_image
+      url
+      text
       img
     }
   }
@@ -78,6 +84,9 @@ export const onDeleteTweet2rekognition = /* GraphQL */ `
       updated_at_time
       user_name
       user_screen_name
+      user_profile_image
+      url
+      text
       img
     }
   }

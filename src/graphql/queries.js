@@ -12,6 +12,9 @@ export const getTweet2rekognition = /* GraphQL */ `
       updated_at_time
       user_name
       user_screen_name
+      user_profile_image
+      url
+      text
       img
     }
   }
@@ -36,6 +39,9 @@ export const listTweet2rekognitions = /* GraphQL */ `
         updated_at_time
         user_name
         user_screen_name
+        user_profile_image
+        url
+        text
         img
       }
       nextToken
@@ -62,6 +68,9 @@ export const queryTweet2rekognitionsByUpdatedAtDateUpdatedAtTimeIndex = /* Graph
         updated_at_time
         user_name
         user_screen_name
+        user_profile_image
+        url
+        text
         img
       }
       nextToken
@@ -88,6 +97,9 @@ export const queryTweet2rekognitionsByUpdatedAtDateRetweetIndex = /* GraphQL */ 
         updated_at_time
         user_name
         user_screen_name
+        user_profile_image
+        url
+        text
         img
       }
       nextToken
@@ -114,6 +126,9 @@ export const queryTweet2rekognitionsByUpdatedAtDateFavoriteIndex = /* GraphQL */
         updated_at_time
         user_name
         user_screen_name
+        user_profile_image
+        url
+        text
         img
       }
       nextToken
@@ -140,6 +155,9 @@ export const queryTweet2rekognitionsByUserScreenNameTimestampIndex = /* GraphQL 
         updated_at_time
         user_name
         user_screen_name
+        user_profile_image
+        url
+        text
         img
       }
       nextToken
@@ -166,6 +184,9 @@ export const queryTweet2rekognitionsByUserNameTimestampIndex = /* GraphQL */ `
         updated_at_time
         user_name
         user_screen_name
+        user_profile_image
+        url
+        text
         img
       }
       nextToken

@@ -12,6 +12,9 @@ export const createTweet2rekognition = /* GraphQL */ `
       updated_at_time
       user_name
       user_screen_name
+      user_profile_image
+      url
+      text
       img
     }
   }
@@ -27,6 +30,9 @@ export const updateTweet2rekognition = /* GraphQL */ `
       updated_at_time
       user_name
       user_screen_name
+      user_profile_image
+      url
+      text
       img
     }
   }
@@ -42,6 +48,9 @@ export const deleteTweet2rekognition = /* GraphQL */ `
       updated_at_time
       user_name
       user_screen_name
+      user_profile_image
+      url
+      text
       img
     }
   }

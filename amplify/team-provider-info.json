@@ -10,6 +10,11 @@
             "StackName": "amplify-virtualstreet-cloudnine-73550",
             "StackId": "arn:aws:cloudformation:ap-northeast-1:028095336055:stack/amplify-virtualstreet-cloudnine-73550/4c16c320-5221-11ea-b835-06ef10f7e39e",
             "AmplifyAppId": "d1czwabccvgi3g"
+        },
+        "categories": {
+            "auth": {
+                "virtualstreeta10edb32": {}
+            }
         }
     }
 }

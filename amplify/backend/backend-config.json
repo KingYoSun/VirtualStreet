@@ -1,1 +1,10 @@
-{}
+{
+	"auth": {
+		"virtualstreeta10edb32": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		}
+	}
+}
