@@ -34,6 +34,7 @@ export default {
   --favorite-color: #d72a61;
   --twitter-blue: #1da1f2;
   --border-color: #bdbdbd;
+  --footer-background: #1f1f1f;
 }
 
 html {
