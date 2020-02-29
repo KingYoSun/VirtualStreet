@@ -54,7 +54,7 @@ export default {
   methods: {
     gain (parent) {
       const gain = parent.clientWidth / this.box.Width
-      const drawGain = (gain < 1.5) ? gain : 1.5
+      const drawGain = (gain < 1.0) ? gain : 1.0
       return drawGain
     },
     resize (canvas, parent, box, drawGain) {
