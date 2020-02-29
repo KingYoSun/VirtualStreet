@@ -3,6 +3,9 @@
     <a href="/terms" target="_blank">
       利用規約
     </a>
+    <a href="/privacypolicy" target="_blank">
+      プライバシーポリシー
+    </a>
   </div>
 </template>
 
@@ -18,6 +21,7 @@
 }
 
 .footer a {
+  margin: 0 5px;
   font-size: 0.85em;
   text-decoration: none;
   color: var(--text-color-main);
