@@ -1,6 +1,8 @@
 <template>
   <div class="footer">
-    <h5>サンプルフッタ</h5>
+    <nuxt-link to="/terms">
+      利用規約
+    </nuxt-link>
   </div>
 </template>
 
@@ -13,5 +15,15 @@
   position: fixed;
   bottom: 0;
   width: 100%;
+}
+
+.footer a {
+  font-size: 0.85em;
+  text-decoration: none;
+  color: var(--text-color-main);
+}
+
+.footer a:hover{
+  text-decoration: underline;
 }
 </style>
