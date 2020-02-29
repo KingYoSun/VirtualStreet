@@ -1,7 +1,9 @@
 <template>
   <div>
     <ex-header />
-    <nuxt />
+    <div class="wrapper">
+      <nuxt />
+    </div>
     <ex-footer />
   </div>
 </template>

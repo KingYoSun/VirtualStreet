@@ -1,8 +1,8 @@
 <template>
   <div class="footer">
-    <nuxt-link to="/terms">
+    <a href="/terms" target="_blank">
       利用規約
-    </nuxt-link>
+    </a>
   </div>
 </template>
 
