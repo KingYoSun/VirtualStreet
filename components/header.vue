@@ -2,9 +2,7 @@
   <div class="header-wrapper">
     <div class="wrapper">
       <a href="/" class="header">
-        <div class="main-icon">
-          <main-logo />
-        </div>
+        <main-logo />
         <main-title />
       </a>
     </div>
@@ -33,6 +31,7 @@ export default {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
+  height: 50px;
 }
 
 .header h1{
@@ -40,15 +39,12 @@ export default {
   padding-right: 6px;
 }
 
-.main-icon {
-  width: 50px;
-  height: 50px;
+.main-logo {
+  height: 100%;
 }
 
 .main-title {
-  margin-top: 3px;
-  width: 245px;
-  height: 50px;
+  height: 100%;
 }
 
 .menu {
