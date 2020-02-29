@@ -1,9 +1,7 @@
 <template>
-  <div class="wrapper">
-    <div class="container">
-      <div>
-        <tweets-list />
-      </div>
+  <div class="container">
+    <div>
+      <tweets-list />
     </div>
   </div>
 </template>
