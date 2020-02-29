@@ -31,6 +31,7 @@ export default {
   --retweet-color: #1dba65;
   --favorite-color: #d72a61;
   --twitter-blue: #1da1f2;
+  --border-color: #bdbdbd;
 }
 
 html {
@@ -54,9 +55,14 @@ html {
   margin: 0;
 }
 
-.wrapper{
+.wrapper {
   max-width: 1340px;
   margin: 0 auto;
+}
+
+.border {
+  border-top: 1px solid var(--border-color);
+  margin: 16px 0;
 }
 
 h3 {
