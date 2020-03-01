@@ -1,8 +1,5 @@
 <template>
   <div>
-    <div class="main-description">
-      <h5>VRCSnap!はTwitterからVRChatのスナップっぽい画像を収集するサイトです</h5>
-    </div>
     <div class="tweet-list">
       <div v-for="(tweet, $index) in tweets" :id="'tweet-container-' + tweet.id" :key="$index">
         <embed-tweet :tweet="tweet" :now-unix="nowUnix" />
@@ -95,10 +92,6 @@ export default {
 </script>
 
 <style>
-.main-description {
-  color: var(--text-color-main);
-}
-
 .tweet-list {
   display: grid;
   grid-gap: 10px;

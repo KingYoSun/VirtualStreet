@@ -5,6 +5,9 @@
         <main-logo />
         <main-title />
       </a>
+      <div class="main-description">
+        <h5>VRCSnap!はTwitterからVRChatのスナップっぽい画像を収集するサイトです</h5>
+      </div>
     </div>
   </div>
 </template>
@@ -24,6 +27,11 @@ export default {
 <style>
 .header-wrapper{
   background-color: transparent;
+}
+
+.main-description {
+  color: var(--text-color-main);
+  margin-left: 8px;
 }
 
 .header {
