@@ -2,7 +2,6 @@
   <div class="header-wrapper">
     <div class="wrapper">
       <a href="/" class="header">
-        <main-logo />
         <main-title />
       </a>
       <div class="main-description">
@@ -13,12 +12,10 @@
 </template>
 
 <script>
-import MainLogo from '~/components/parts/header/logo.vue'
 import MainTitle from '~/components/parts/header/title.vue'
 
 export default {
   components: {
-    MainLogo,
     MainTitle
   }
 }
