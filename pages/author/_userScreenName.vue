@@ -1,33 +1,76 @@
 <template>
   <div class="container">
     <div>
+      <author-card-big ref="authorCardBig" :author="author" />
+    </div>
+    <div>
       <tweets-list-user :user-screen-name="$route.params.userScreenName" />
     </div>
   </div>
 </template>
 
 <script>
+import { API, graphqlOperation } from 'aws-amplify'
+import AuthorCardBig from '~/components/parts/author/authorCardBig.vue'
 import TweetsListUser from '~/components/tweetsListUser.vue'
 
 export default {
+  name: 'Author',
   layout: 'default',
   components: {
+    AuthorCardBig,
     TweetsListUser
   },
   data () {
     return {
-      title: ''
+      title: '',
+      author: {
+        type: Object,
+        default () {
+          return {
+            user_screen_name: '',
+            user_name: '',
+            user_profile_banner: '',
+            user_profile_description: '',
+            user_profile_follow_count: 0,
+            user_profile_follower_count: 0,
+            user_profile_image: '',
+            user_profile_url: ''
+          }
+        }
+      }
     }
   },
   mounted () {
-    this.title = this.$route.params.userScreenName || ''
+    this.loadAuthorData()
+  },
+  methods: {
+    loadAuthorData () {
+      const AuthorQuery = `query getUser {
+        getTweet2rekognitionUser(user_screen_name: "${this.$route.params.userScreenName}"){
+          user_screen_name
+          user_name
+          user_profile_banner
+          user_profile_description
+          user_profile_follow_count
+          user_profile_follower_count
+          user_profile_image
+          user_profile_url
+        }
+      }`
+      API.graphql(graphqlOperation(AuthorQuery))
+        .then((response) => {
+          this.author = response.data.getTweet2rekognitionUser
+          this.title = response.data.getTweet2rekognitionUser.user_name
+        })
+    }
   },
   head () {
     return {
-      title: this.title,
+      title: this.title + 'さんのスナップ一覧 | VRCSnap!',
       meta: [
         {
-          hid: 'description', name: 'description', content: 'This is Author Page'
+          hid: 'description', name: 'description', content: this.title + 'さんのスナップ一覧 | VRCSnap!'
         }
       ]
     }

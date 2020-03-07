@@ -4,7 +4,7 @@
       <div class="author-table">
         <div class="author-icon">
           <a :href="'https://twitter.com/' + tweet.user_screen_name" target="_blank">
-            <img class="profile-image" :src="tweet.user_profile_image">
+            <img class="profile-image" :src="tweet.user_profile_image" @error="imgAlt">
           </a>
         </div>
         <div class="author-info">
@@ -75,7 +75,7 @@ export default {
           timestamp: 0,
           user_name: '',
           user_screen_name: '',
-          user_profile_image: 'https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png',
+          user_profile_image: '',
           retweet: 0,
           favorite: 0,
           text: ''
@@ -95,6 +95,9 @@ export default {
     }
   },
   mounted () {
+    if (this.tweet.user_profile_image === null) {
+      this.tweet.user_profile_image = 'https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png'
+    }
     this.images = JSON.parse(this.tweet.img)
     this.calcTimeLag()
     this.cutText()
@@ -142,6 +145,9 @@ export default {
       const tweetBoxHeight = this.$refs.authorBox.offsetHeight + this.$refs.imagesContainer.offsetHeight + this.$refs.textContainer.offsetHeight
       const tweetContainer = document.getElementById('tweet-container-' + String(this.tweet.id))
       tweetContainer.setAttribute('style', `height: ${tweetBoxHeight}px;grid-row: span ${Math.ceil(((tweetBoxHeight + 10) / (20 + 10)) + 1)};`)
+    },
+    imgAlt (event) {
+      event.target.src = 'https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png'
     }
   }
 }
@@ -183,8 +189,8 @@ export default {
 }
 
 .author-link {
+  display: block;
   text-decoration: none;
-  line-height: 1;
 }
 
 .author-name {
