@@ -138,13 +138,13 @@ export const queryTweet2rekognitionsByUpdatedAtDateFavoriteIndex = /* GraphQL */
 export const queryTweet2rekognitionsByUserScreenNameTimestampIndex = /* GraphQL */ `
   query QueryTweet2rekognitionsByUserScreenNameTimestampIndex(
     $user_screen_name: String!
-    $first: Int
-    $after: String
+    $limit: Int
+    $nextToken: String
   ) {
     queryTweet2rekognitionsByUserScreenNameTimestampIndex(
       user_screen_name: $user_screen_name
-      first: $first
-      after: $after
+      limit: $limit
+      nextToken: $nextToken
     ) {
       items {
         favorite
@@ -188,6 +188,49 @@ export const queryTweet2rekognitionsByUserNameTimestampIndex = /* GraphQL */ `
         url
         text
         img
+      }
+      nextToken
+    }
+  }
+`;
+export const getTweet2rekognitionUser = /* GraphQL */ `
+  query GetTweet2rekognitionUser($user_screen_name: String!) {
+    getTweet2rekognitionUser(user_screen_name: $user_screen_name) {
+      user_screen_name
+      user_name
+      user_profile_banner
+      user_profile_description
+      user_profile_follow_count
+      user_profile_follower_count
+      user_profile_image
+      user_profile_url
+    }
+  }
+`;
+export const listTweet2rekognitionUsers = /* GraphQL */ `
+  query ListTweet2rekognitionUsers(
+    $user_screen_name: String
+    $user_name: String
+    $user_profile_description: String
+    $limit: Int
+    $nextToken: String
+  ) {
+    listTweet2rekognitionUsers(
+      user_screen_name: $user_screen_name
+      user_name: $user_name
+      user_profile_description: $user_profile_description
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        user_screen_name
+        user_name
+        user_profile_banner
+        user_profile_description
+        user_profile_follow_count
+        user_profile_follower_count
+        user_profile_image
+        user_profile_url
       }
       nextToken
     }

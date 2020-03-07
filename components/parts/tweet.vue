@@ -8,10 +8,14 @@
           </a>
         </div>
         <div class="author-info">
-          <a :href="'https://twitter.com/' + tweet.user_screen_name" class="author-link" target="_blank" title="Twitterでユーザーを見る">
-            <h3 class="author-name">{{ tweet.user_name }}</h3>
-            <h5 class="author-screen-name">@{{ tweet.user_screen_name }}</h5>
-          </a>
+          <n-link :to="{ name: 'author-userScreenName', params: { userScreenName: tweet.user_screen_name} }" class="author-link">
+            <h3 class="author-name">
+              {{ tweet.user_name }}
+            </h3>
+            <h5 class="author-screen-name">
+              @{{ tweet.user_screen_name }}
+            </h5>
+          </n-link>
           <div class="author-info-data">
             <a :href="'https://twitter.com/' + tweet.user_screen_name + '/status/' + tweet.id" class="time-lag" target="_blank" title="Twitterで見る">
               <h5>{{ timeLag }}{{ timeLagScale }}</h5>

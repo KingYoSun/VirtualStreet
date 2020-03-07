@@ -12,5 +12,4 @@ const awsmobile = {
     "aws_appsync_authenticationType": "AWS_IAM",
 }
 
-
 export default awsmobile

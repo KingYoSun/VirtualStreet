@@ -1,9 +1,9 @@
 <template>
   <div class="header-wrapper">
     <div class="wrapper">
-      <a href="/" class="header">
+      <n-link to="/" class="header">
         <main-title />
-      </a>
+      </n-link>
       <div class="main-description">
         <h5>VRCSnap!はTwitterからVRChatのスナップっぽい画像を収集するサイトです</h5>
       </div>

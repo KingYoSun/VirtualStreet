@@ -91,3 +91,81 @@ export const onDeleteTweet2rekognition = /* GraphQL */ `
     }
   }
 `;
+export const onCreateTweet2rekognitionUser = /* GraphQL */ `
+  subscription OnCreateTweet2rekognitionUser(
+    $user_screen_name: String
+    $user_name: String
+    $user_profile_banner: String
+    $user_profile_description: String
+    $user_profile_follow_count: Int
+  ) {
+    onCreateTweet2rekognitionUser(
+      user_screen_name: $user_screen_name
+      user_name: $user_name
+      user_profile_banner: $user_profile_banner
+      user_profile_description: $user_profile_description
+      user_profile_follow_count: $user_profile_follow_count
+    ) {
+      user_screen_name
+      user_name
+      user_profile_banner
+      user_profile_description
+      user_profile_follow_count
+      user_profile_follower_count
+      user_profile_image
+      user_profile_url
+    }
+  }
+`;
+export const onUpdateTweet2rekognitionUser = /* GraphQL */ `
+  subscription OnUpdateTweet2rekognitionUser(
+    $user_screen_name: String
+    $user_name: String
+    $user_profile_banner: String
+    $user_profile_description: String
+    $user_profile_follow_count: Int
+  ) {
+    onUpdateTweet2rekognitionUser(
+      user_screen_name: $user_screen_name
+      user_name: $user_name
+      user_profile_banner: $user_profile_banner
+      user_profile_description: $user_profile_description
+      user_profile_follow_count: $user_profile_follow_count
+    ) {
+      user_screen_name
+      user_name
+      user_profile_banner
+      user_profile_description
+      user_profile_follow_count
+      user_profile_follower_count
+      user_profile_image
+      user_profile_url
+    }
+  }
+`;
+export const onDeleteTweet2rekognitionUser = /* GraphQL */ `
+  subscription OnDeleteTweet2rekognitionUser(
+    $user_screen_name: String
+    $user_name: String
+    $user_profile_banner: String
+    $user_profile_description: String
+    $user_profile_follow_count: Int
+  ) {
+    onDeleteTweet2rekognitionUser(
+      user_screen_name: $user_screen_name
+      user_name: $user_name
+      user_profile_banner: $user_profile_banner
+      user_profile_description: $user_profile_description
+      user_profile_follow_count: $user_profile_follow_count
+    ) {
+      user_screen_name
+      user_name
+      user_profile_banner
+      user_profile_description
+      user_profile_follow_count
+      user_profile_follower_count
+      user_profile_image
+      user_profile_url
+    }
+  }
+`;

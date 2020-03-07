@@ -18,11 +18,6 @@ import EmbedTweet from '~/components/parts/tweet.vue'
 
 const date = new Date()
 const nowUnix = Math.floor(date.getTime() / 1000)
-const year = date.getUTCFullYear()
-const month = date.getUTCMonth() + 1
-const day = date.getUTCDate()
-const today = year + '-' + month + '-' + day + ' 00:00:00 UTC'
-const todayUnix = Date.parse(today) / 1000
 
 export default {
   name: 'TweetsList',
@@ -30,12 +25,17 @@ export default {
     EmbedTweet,
     InfiniteLoading
   },
+  props: {
+    userScreenName: {
+      type: String,
+      default: ''
+    }
+  },
   data () {
     return {
       page: 1,
       tweets: [],
       nextToken: null,
-      searchDay: todayUnix,
       nowUnix,
       infiniteId: 0
     }
@@ -46,14 +46,13 @@ export default {
   methods: {
     infiniteHandler ($state) {
       try {
-        if (!this.nextToken && this.page > 1) {
-          this.searchDay -= 86400
-        }
         if (this.nextToken) {
           this.nextToken = `"${this.nextToken}"`
+        } else if (this.page > 1) {
+          $state.complete()
         }
-        const TweetsListQuery = `query list {
-          listTweet2rekognitions(updated_at_date: ${this.searchDay}, limit: 10, nextToken: ${this.nextToken}) {
+        const TweetsListUserQuery = `query listUser {
+          queryTweet2rekognitionsByUserScreenNameTimestampIndex(user_screen_name: "${this.userScreenName}", limit: 10, nextToken: ${this.nextToken}) {
             items {
               id
               user_name
@@ -68,15 +67,15 @@ export default {
             nextToken
           }
         }`
-        API.graphql(graphqlOperation(TweetsListQuery))
+        API.graphql(graphqlOperation(TweetsListUserQuery))
           .then((response) => {
             this.page += 1
-            for (const item of response.data.listTweet2rekognitions.items) {
+            for (const item of response.data.queryTweet2rekognitionsByUserScreenNameTimestampIndex.items) {
               if (this.tweets.find(element => element.id === item.id) === undefined) {
                 this.tweets.push(item)
               }
             }
-            this.nextToken = response.data.listTweet2rekognitions.nextToken
+            this.nextToken = response.data.queryTweet2rekognitionsByUserScreenNameTimestampIndex.nextToken
             $state.loaded()
           })
       } catch (e) {
