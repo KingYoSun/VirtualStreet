@@ -8,7 +8,7 @@
           </a>
         </div>
         <div class="author-info">
-          <n-link :to="{ name: 'author-userScreenName', params: { userScreenName: tweet.user_screen_name} }" class="author-link">
+          <n-link :to="{ name: 'author-userScreenName', params: { userScreenName: tweet.user_screen_name} }" class="author-link" style="display: block">
             <h3 class="author-name">
               {{ tweet.user_name }}
             </h3>
@@ -189,7 +189,6 @@ export default {
 }
 
 .author-link {
-  display: block;
   text-decoration: none;
 }
 
