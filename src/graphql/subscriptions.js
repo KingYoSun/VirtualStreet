@@ -114,6 +114,7 @@ export const onCreateTweet2rekognitionUser = /* GraphQL */ `
       user_profile_follower_count
       user_profile_image
       user_profile_url
+      time_to_live
     }
   }
 `;
@@ -140,6 +141,7 @@ export const onUpdateTweet2rekognitionUser = /* GraphQL */ `
       user_profile_follower_count
       user_profile_image
       user_profile_url
+      time_to_live
     }
   }
 `;
@@ -166,6 +168,7 @@ export const onDeleteTweet2rekognitionUser = /* GraphQL */ `
       user_profile_follower_count
       user_profile_image
       user_profile_url
+      time_to_live
     }
   }
 `;

@@ -204,18 +204,19 @@ export const getTweet2rekognitionUser = /* GraphQL */ `
       user_profile_follower_count
       user_profile_image
       user_profile_url
+      time_to_live
     }
   }
 `;
-export const listTweet2rekognitionUsers = /* GraphQL */ `
-  query ListTweet2rekognitionUsers(
+export const listTweet2rekognitionUsersFollower = /* GraphQL */ `
+  query ListTweet2rekognitionUsersFollower(
     $user_screen_name: String
     $user_name: String
     $user_profile_description: String
     $limit: Int
     $nextToken: String
   ) {
-    listTweet2rekognitionUsers(
+    listTweet2rekognitionUsersFollower(
       user_screen_name: $user_screen_name
       user_name: $user_name
       user_profile_description: $user_profile_description
@@ -231,6 +232,37 @@ export const listTweet2rekognitionUsers = /* GraphQL */ `
         user_profile_follower_count
         user_profile_image
         user_profile_url
+        time_to_live
+      }
+      nextToken
+    }
+  }
+`;
+export const listTweet2rekognitionUsersLatest = /* GraphQL */ `
+  query ListTweet2rekognitionUsersLatest(
+    $user_screen_name: String
+    $user_name: String
+    $user_profile_description: String
+    $limit: Int
+    $nextToken: String
+  ) {
+    listTweet2rekognitionUsersLatest(
+      user_screen_name: $user_screen_name
+      user_name: $user_name
+      user_profile_description: $user_profile_description
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        user_screen_name
+        user_name
+        user_profile_banner
+        user_profile_description
+        user_profile_follow_count
+        user_profile_follower_count
+        user_profile_image
+        user_profile_url
+        time_to_live
       }
       nextToken
     }

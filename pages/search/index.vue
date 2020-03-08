@@ -1,5 +1,8 @@
 <template>
   <div class="container">
+    <div class="select-sortType">
+      <sort-type-author :keyword="keyword" :sort-type="sortType" />
+    </div>
     <div class="author-list">
       <div v-for="(author, $index) in authors" :id="'authorContainer-' + author.user_screen_name" :key="$index">
         <author-card-small ref="authorCardSmall" :author="author" />
@@ -15,13 +18,25 @@
 import InfiniteLoading from 'vue-infinite-loading'
 import { API, graphqlOperation } from 'aws-amplify'
 import AuthorCardSmall from '~/components/parts/author/authorCardSmall.vue'
+import SortTypeAuthor from '~/components/parts/sortTypeAuthor.vue'
 
 export default {
   name: 'Author',
   layout: 'default',
   components: {
     InfiniteLoading,
-    AuthorCardSmall
+    AuthorCardSmall,
+    SortTypeAuthor
+  },
+  props: {
+    keyword: {
+      type: String,
+      default: ''
+    },
+    sortType: {
+      type: String,
+      default: 'Follower'
+    }
   },
   data () {
     return {
@@ -29,23 +44,28 @@ export default {
       nextToken: null,
       infiniteId: 0,
       title: '',
-      keyword: '',
-      authors: []
+      authors: [],
+      responseObj: {}
     }
   },
   mounted () {
-    this.queryUpdated(this.$route.query.keyword)
+    this.sortType = this.$route.query.sort || 'Follower'
+    this.queryUpdated(this.$route.query.keyword, this.sortType)
   },
   beforeRouteUpdate (to, from, next) {
-    this.queryUpdated(to.query.keyword)
+    this.sortType = to.query.sort || 'Follower'
+    this.queryUpdated(to.query.keyword, to.query.sort)
     this.authors = []
+    this.nextToken = null
+    this.page = 0
     this.$refs.infiniteLoading.stateChanger.reset()
     next()
   },
   methods: {
-    queryUpdated (keyword) {
+    queryUpdated (keyword, sort) {
       this.keyword = keyword
       this.title = keyword
+      this.sortType = sort
       this.infiniteId += 1
     },
     infiniteHandler ($state) {
@@ -55,7 +75,7 @@ export default {
         $state.complete()
       }
       const AuthorListQuery = `query getUserList {
-        listTweet2rekognitionUsers(user_screen_name: "${this.keyword}", user_name: "${this.keyword}", user_profile_description: "${this.keyword}", limit: 100, nextToken: ${this.nextToken}) {
+        listTweet2rekognitionUsers${this.sortType} (user_screen_name: "${this.keyword}", user_name: "${this.keyword}", user_profile_description: "${this.keyword}", limit: 100, nextToken: ${this.nextToken}) {
           items {
             user_screen_name
             user_name
@@ -73,12 +93,17 @@ export default {
         API.graphql(graphqlOperation(AuthorListQuery))
           .then((response) => {
             this.page += 1
-            for (const item of response.data.listTweet2rekognitionUsers.items) {
+            if (this.sortType === 'Follower') {
+              this.responseObj = response.data.listTweet2rekognitionUsersFollower
+            } else if (this.sortType === 'Latest') {
+              this.responseObj = response.data.listTweet2rekognitionUsersLatest
+            }
+            for (const item of this.responseObj.items) {
               if (this.authors.find(element => element.user_screen_name === item.user_screen_name) === undefined) {
                 this.authors.push(item)
               }
             }
-            this.nextToken = response.data.listTweet2rekognitionUsers.nextToken
+            this.nextToken = this.responseObj.nextToken
             $state.loaded()
           })
       } catch (e) {
