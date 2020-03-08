@@ -51,6 +51,8 @@ export default {
         }
         if (this.nextToken) {
           this.nextToken = `"${this.nextToken}"`
+        } else if (this.page > 1) {
+          $state.complete()
         }
         const TweetsListQuery = `query list {
           listTweet2rekognitions(updated_at_date: ${this.searchDay}, limit: 10, nextToken: ${this.nextToken}) {

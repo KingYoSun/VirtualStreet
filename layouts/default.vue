@@ -75,4 +75,8 @@ h3 {
 img:hover {
   opacity: 0.7;
 }
+
+.infinite-loading-container {
+  margin-bottom: 30px;
+}
 </style>

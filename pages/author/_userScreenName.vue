@@ -81,6 +81,7 @@ export default {
 <style>
 .container {
   min-height: 100vh;
+  margin-top: 20px;
 }
 
 .title {

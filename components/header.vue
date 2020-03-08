@@ -1,9 +1,14 @@
 <template>
   <div class="header-wrapper">
     <div class="wrapper">
-      <n-link to="/" class="header">
-        <main-title />
-      </n-link>
+      <div class="header">
+        <n-link to="/" class="header-top-link">
+          <main-title />
+        </n-link>
+        <div class="search-form">
+          <search-form />
+        </div>
+      </div>
       <div class="main-description">
         <h5>VRCSnap!はTwitterからVRChatのスナップっぽい画像を収集するサイトです</h5>
       </div>
@@ -13,10 +18,12 @@
 
 <script>
 import MainTitle from '~/components/parts/header/title.vue'
+import SearchForm from '~/components/parts/searchForm.vue'
 
 export default {
   components: {
-    MainTitle
+    MainTitle,
+    SearchForm
   }
 }
 </script>
@@ -35,8 +42,15 @@ export default {
   color: var(--text-color-main);
   display: flex;
   flex-wrap: nowrap;
-  align-items: center;
+  align-items: flex-end;
+}
+
+.header-top-link {
   height: 50px;
+}
+
+.search-form {
+  margin-left: auto;
 }
 
 .header h1{

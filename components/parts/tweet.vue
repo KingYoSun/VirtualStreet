@@ -155,6 +155,7 @@ export default {
 
 <style>
 .tweet-box {
+  max-width: 600px;
   margin: 20px 20px;
   background: var(--background-color);
   box-shadow: 5px 5px 20px var(--border-dark), -5px -5px 20px var(--border-dark);
