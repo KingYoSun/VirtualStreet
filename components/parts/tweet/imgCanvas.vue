@@ -31,7 +31,8 @@ export default {
         Bottom: 0
       },
       width: 0,
-      height: 0
+      height: 0,
+      drawGain: 0
     }
   },
   mounted () {
@@ -45,9 +46,9 @@ export default {
       self.width = img.width
       self.height = img.height
       self.box = self.imageTrimming(self.image, self.width, self.height)
-      const drawGain = self.gain(canvasContainer)
-      self.resize(canvas, canvasContainer, self.box, drawGain)
-      ctx.drawImage(img, self.box.Left, self.box.Top, self.box.Width, self.box.Height, 0, 0, self.box.Width * drawGain, self.box.Height * drawGain)
+      self.drawGain = self.gain(canvasContainer)
+      self.resize(canvas, canvasContainer, self.box, self.drawGain)
+      ctx.drawImage(img, self.box.Left, self.box.Top, self.box.Width, self.box.Height, 0, 0, self.box.Width * self.drawGain, self.box.Height * self.drawGain)
       self.$emit('sendHeight')
     }
   },
