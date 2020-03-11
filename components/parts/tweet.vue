@@ -142,7 +142,7 @@ export default {
       this.setGridSpanResize()
     },
     setGridSpanResize () {
-      const tweetBoxHeight = this.$refs.authorBox.offsetHeight + this.$refs.imagesContainer.offsetHeight + this.$refs.textContainer.offsetHeight
+      const tweetBoxHeight = this.$refs.authorBox.offsetHeight + this.$refs.imagesContainer.offsetHeight + this.$refs.textContainer.offsetHeight + 4
       const tweetContainer = document.getElementById('tweet-container-' + String(this.tweet.id))
       tweetContainer.setAttribute('style', `height: ${tweetBoxHeight}px;grid-row: span ${Math.ceil(((tweetBoxHeight + 10) / (20 + 10)) + 1)};`)
     },

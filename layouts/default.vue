@@ -61,6 +61,7 @@ html {
 .wrapper {
   max-width: 1340px;
   margin: 0 auto;
+  padding-bottom: 20px;
 }
 
 .border {
@@ -74,9 +75,5 @@ h3 {
 
 img:hover {
   opacity: 0.7;
-}
-
-.infinite-loading-container {
-  margin-bottom: 30px;
 }
 </style>

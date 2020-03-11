@@ -20,6 +20,8 @@ const date = new Date()
 const nowUnix = Math.floor(date.getTime() / 1000)
 const year = date.getUTCFullYear()
 const month = date.getUTCMonth() + 1
+const lastMonth = year + '-' + date.getUTCMonth() + '-00 00:00:00 UTC'
+const lastMonthUnix = Date.parse(lastMonth) / 1000
 const day = date.getUTCDate()
 const today = year + '-' + month + '-' + day + ' 00:00:00 UTC'
 const todayUnix = Date.parse(today) / 1000
@@ -46,12 +48,14 @@ export default {
   methods: {
     infiniteHandler ($state) {
       try {
-        if (!this.nextToken && this.page > 1) {
-          this.searchDay -= 86400
-        }
         if (this.nextToken) {
           this.nextToken = `"${this.nextToken}"`
         } else if (this.page > 1) {
+          this.searchDay -= 86400
+        } else if (this.searchDay <= lastMonthUnix) {
+          $state.complete()
+        }
+        if (this.tweets.length > 20) {
           $state.complete()
         }
         const TweetsListQuery = `query list {

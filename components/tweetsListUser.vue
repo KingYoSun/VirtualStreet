@@ -48,7 +48,7 @@ export default {
       try {
         if (this.nextToken) {
           this.nextToken = `"${this.nextToken}"`
-        } else if (this.page > 1) {
+        } else if (this.page > 1 || this.tweets.length > 40) {
           $state.complete()
         }
         const TweetsListUserQuery = `query listUser {
