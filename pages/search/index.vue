@@ -1,7 +1,12 @@
 <template>
   <div class="container">
-    <div class="select-sortType">
-      <sort-type-author :keyword="keyword" :sort-type="sortType" />
+    <div class="first-row">
+      <div class="result-description">
+        <h1>「{{ keyword }}」を含む作者の検索結果</h1>
+      </div>
+      <div class="select-sortType">
+        <sort-type-author :keyword="keyword" :sort-type="sortType" />
+      </div>
     </div>
     <div class="author-list">
       <div v-for="(author, $index) in authors" :id="'authorContainer-' + author.user_screen_name" :key="$index">
@@ -127,6 +132,7 @@ export default {
 <style>
 .container {
   min-height: 100vh;
+  margin-top: 0px !important;
 }
 
 .title {
@@ -145,6 +151,26 @@ export default {
   color: #526488;
   word-spacing: 5px;
   padding-bottom: 15px;
+}
+
+.first-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.result-description {
+  margin: 0 5px;
+}
+
+.result-description h1 {
+  white-space: nowrap;
+  font-size: calc(1.5rem + ((1vw - 3.5px) * 0.5096));
+}
+
+.select-sortType {
+  margin: 0 5px;
 }
 
 .author-list {
