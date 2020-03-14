@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div>
+    <div class="author-card-big-container" :style="'display:' + cssDisplay + ';'" >
       <author-card-big ref="authorCardBig" :author="author" />
     </div>
     <div>
@@ -24,6 +24,7 @@ export default {
   data () {
     return {
       title: '',
+      cssDisplay: 'none',
       author: {
         type: Object,
         default () {
@@ -62,6 +63,7 @@ export default {
         .then((response) => {
           this.author = response.data.getTweet2rekognitionUser
           this.title = response.data.getTweet2rekognitionUser.user_name
+          this.cssDisplay = 'block'
         })
     }
   },
