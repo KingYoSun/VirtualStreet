@@ -18,8 +18,6 @@
   color: white;
   text-align: center;
   background-color: var(--footer-background);
-  position: fixed;
-  bottom: 0;
   width: 100%;
 }
 

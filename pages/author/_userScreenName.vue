@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="author-card-big-container" :style="'display:' + cssDisplay + ';'" >
+    <div class="author-card-big-container" :style="'display:' + cssDisplay + ';'">
       <author-card-big ref="authorCardBig" :author="author" />
     </div>
     <div>
