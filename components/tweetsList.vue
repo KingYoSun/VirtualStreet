@@ -55,9 +55,6 @@ export default {
         } else if (this.searchDay <= lastMonthUnix) {
           $state.complete()
         }
-        if (this.tweets.length > 20) {
-          $state.complete()
-        }
         const TweetsListQuery = `query list {
           listTweet2rekognitions(updated_at_date: ${this.searchDay}, limit: 10, nextToken: ${this.nextToken}) {
             items {
@@ -83,7 +80,11 @@ export default {
               }
             }
             this.nextToken = response.data.listTweet2rekognitions.nextToken
-            $state.loaded()
+            if (this.tweets.length >= 30) {
+              $state.complete()
+            } else {
+              $state.loaded()
+            }
           })
       } catch (e) {
         $state.complete()

@@ -48,7 +48,7 @@ export default {
       try {
         if (this.nextToken) {
           this.nextToken = `"${this.nextToken}"`
-        } else if (this.page > 1 || this.tweets.length > 20) {
+        } else if (this.page > 1) {
           $state.complete()
         }
         const TweetsListUserQuery = `query listUser {
@@ -76,7 +76,11 @@ export default {
               }
             }
             this.nextToken = response.data.queryTweet2rekognitionsByUserScreenNameTimestampIndex.nextToken
-            $state.loaded()
+            if (this.tweets.length >= 30) {
+              $state.complete()
+            } else {
+              $state.loaded()
+            }
           })
       } catch (e) {
         $state.complete()
