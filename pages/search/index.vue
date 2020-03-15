@@ -23,7 +23,7 @@
 import InfiniteLoading from 'vue-infinite-loading'
 import { API, graphqlOperation } from 'aws-amplify'
 import AuthorCardSmall from '~/components/parts/author/authorCardSmall.vue'
-import SortTypeAuthor from '~/components/parts/sortTypeAuthor.vue'
+import SortTypeAuthor from '~/components/parts/author/sortTypeAuthor.vue'
 
 export default {
   name: 'Author',

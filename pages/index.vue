@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div>
-      <tweets-list />
+      <tweets-list ref="tweetsList" />
     </div>
   </div>
 </template>
@@ -28,6 +28,11 @@ export default {
         }
       ]
     }
+  },
+  beforeRouteUpdate (to, from, next) {
+    const sortType = to.query.sort || 'Latest'
+    this.$refs.tweetsList.updateSortType(sortType)
+    next()
   }
 }
 </script>

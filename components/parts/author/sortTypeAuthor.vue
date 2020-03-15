@@ -1,9 +1,9 @@
 <template>
-  <div class="sortbtn-container">
-    <n-link :to="{ name: 'search', query: {keyword: keyword, sort: 'Follower'}}" class="sortType-btn follower" :class="[ sortType === 'Follower' ? 'is-disabled' : '' ]">
+  <div class="sortbtn-container-author">
+    <n-link :to="{ name: 'search', query: {keyword: keyword, sort: 'Follower'}}" class="sortType-btn-author follower" :class="[ sortType === 'Follower' ? 'is-disabled-author' : '' ]">
       <h3>フォロワー数</h3>
     </n-link>
-    <n-link :to="{ name: 'search', query: {keyword: keyword, sort: 'Latest'}}" class="sortType-btn latest" :class="[ sortType === 'Latest' ? 'is-disabled' : '' ]">
+    <n-link :to="{ name: 'search', query: {keyword: keyword, sort: 'Latest'}}" class="sortType-btn-author author-latest" :class="[ sortType === 'Latest' ? 'is-disabled-author' : '' ]">
       <h3>更新日</h3>
     </n-link>
   </div>
@@ -48,27 +48,27 @@ export default {
 </script>
 
 <style>
-.sortbtn-container {
+.sortbtn-container-author {
   display: flex;
   justify-content: flex-end;
 }
 
-.sortbtn-container a {
+.sortbtn-container-author a {
   text-decoration: none;
 }
 
-.sortType-btn {
+.sortType-btn-author {
   color: var(--text-color-sub);
   border: solid 1px var(--border-color);
   padding: 10px;
 }
 
-.sortType-btn:hover {
+.sortType-btn-author:hover {
   color: var(--text-color-sub-hover);
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-.is-disabled {
+.is-disabled-author {
   pointer-events: none;
   color: var(--text-color-sub-hover);
   background-color: rgba(0, 0, 0, 0.7);
@@ -78,7 +78,7 @@ export default {
   border-radius: 10px 0 0 10px;
 }
 
-.latest {
+.author-latest {
   border-radius: 0 10px 10px 0;
 }
 </style>
