@@ -1,6 +1,9 @@
 <template>
   <div class="container">
     <div>
+      <hot-tweets ref="hotTweets" />
+    </div>
+    <div>
       <tweets-list ref="tweetsList" />
     </div>
   </div>
@@ -8,11 +11,13 @@
 
 <script>
 import TweetsList from '~/components/tweetsList.vue'
+import HotTweets from '~/components/hot.vue'
 
 export default {
   layout: 'default',
   components: {
-    TweetsList
+    TweetsList,
+    HotTweets
   },
   data () {
     return {

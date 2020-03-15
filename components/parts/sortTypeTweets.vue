@@ -29,7 +29,6 @@ export default {
     }
   },
   mounted () {
-    this.sortType = this.$route.query.sortType || 'dRT'
     this.disableFlag()
   },
   methods: {

@@ -1,9 +1,9 @@
 <template>
   <div class="sortbtn-container-author">
-    <n-link :to="{ name: 'search', query: {keyword: keyword, sort: 'Follower'}}" class="sortType-btn-author follower" :class="[ sortType === 'Follower' ? 'is-disabled-author' : '' ]">
+    <n-link :to="{ name: 'search', query: {keyword: keyword, sort: 'Follower'}}" class="sortType-btn-author follower" :class="[ sortTypeAuthor === 'Follower' ? 'is-disabled-author' : '' ]">
       <h3>フォロワー数</h3>
     </n-link>
-    <n-link :to="{ name: 'search', query: {keyword: keyword, sort: 'Latest'}}" class="sortType-btn-author author-latest" :class="[ sortType === 'Latest' ? 'is-disabled-author' : '' ]">
+    <n-link :to="{ name: 'search', query: {keyword: keyword, sort: 'Latest'}}" class="sortType-btn-author author-latest" :class="[ sortTypeAuthor === 'Latest' ? 'is-disabled-author' : '' ]">
       <h3>更新日</h3>
     </n-link>
   </div>
@@ -17,7 +17,7 @@ export default {
       type: String,
       default: ''
     },
-    sortType: {
+    sortTypeAuthor: {
       type: String,
       default: 'Follower'
     }
@@ -29,16 +29,14 @@ export default {
     }
   },
   mounted () {
-    this.keyword = this.$route.query.keyword || ''
-    this.sortType = this.$route.query.sortType || 'Follower'
     this.disableFlag()
   },
   methods: {
     disableFlag () {
-      if (this.sortType === 'Follower') {
+      if (this.sortTypeAuthor === 'Follower') {
         this.disableFlagFollower = true
         this.disableFlagLatest = false
-      } else if (this.sortType === 'Latest') {
+      } else if (this.sortTypeAuthor === 'Latest') {
         this.disableFlagFollower = false
         this.disableFlagLatest = true
       }

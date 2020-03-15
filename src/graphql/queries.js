@@ -268,3 +268,157 @@ export const listTweet2rekognitionUsersLatest = /* GraphQL */ `
     }
   }
 `;
+export const getTweet2rekognitionRanking = /* GraphQL */ `
+  query GetTweet2rekognitionRanking($div: Int!, $id: ID!) {
+    getTweet2rekognitionRanking(div: $div, id: $id) {
+      div
+      id
+      d_RT
+      d_fav
+      rate
+      favorite
+      retweet
+      timestamp
+      updated_at_date
+      updated_at_time
+      user_name
+      user_screen_name
+      user_profile_image
+      url
+      text
+      img
+    }
+  }
+`;
+export const listTweet2rekognitionRankings = /* GraphQL */ `
+  query ListTweet2rekognitionRankings(
+    $filter: TableTweet2rekognitionRankingFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listTweet2rekognitionRankings(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        div
+        id
+        d_RT
+        d_fav
+        rate
+        favorite
+        retweet
+        timestamp
+        updated_at_date
+        updated_at_time
+        user_name
+        user_screen_name
+        user_profile_image
+        url
+        text
+        img
+      }
+      nextToken
+    }
+  }
+`;
+export const queryTweet2rekognitionRankingsByDivDrtIndex = /* GraphQL */ `
+  query QueryTweet2rekognitionRankingsByDivDrtIndex(
+    $div: Int!
+    $limit: Int
+    $nextToken: String
+  ) {
+    queryTweet2rekognitionRankingsByDivDRTIndex(
+      div: $div
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        div
+        id
+        d_RT
+        d_fav
+        rate
+        favorite
+        retweet
+        timestamp
+        updated_at_date
+        updated_at_time
+        user_name
+        user_screen_name
+        user_profile_image
+        url
+        text
+        img
+      }
+      nextToken
+    }
+  }
+`;
+export const queryTweet2rekognitionRankingsByDivDFavIndex = /* GraphQL */ `
+  query QueryTweet2rekognitionRankingsByDivDFavIndex(
+    $div: Int!
+    $limit: Int
+    $nextToken: String
+  ) {
+    queryTweet2rekognitionRankingsByDivDFavIndex(
+      div: $div
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        div
+        id
+        d_RT
+        d_fav
+        rate
+        favorite
+        retweet
+        timestamp
+        updated_at_date
+        updated_at_time
+        user_name
+        user_screen_name
+        user_profile_image
+        url
+        text
+        img
+      }
+      nextToken
+    }
+  }
+`;
+export const queryTweet2rekognitionRankingsByDivRateIndex = /* GraphQL */ `
+  query QueryTweet2rekognitionRankingsByDivRateIndex(
+    $div: Int!
+    $limit: Int
+    $nextToken: String
+  ) {
+    queryTweet2rekognitionRankingsByDivRateIndex(
+      div: $div
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        div
+        id
+        d_RT
+        d_fav
+        rate
+        favorite
+        retweet
+        timestamp
+        updated_at_date
+        updated_at_time
+        user_name
+        user_screen_name
+        user_profile_image
+        url
+        text
+        img
+      }
+      nextToken
+    }
+  }
+`;

@@ -4,8 +4,8 @@
       <div class="result-description">
         <h1>「{{ keyword }}」を含む作者の検索結果</h1>
       </div>
-      <div class="select-sortType">
-        <sort-type-author :keyword="keyword" :sort-type="sortType" />
+      <div class="select-sortType-author">
+        <sort-type-author :keyword="keyword" :sort-type-author="sortTypeAuthor" />
       </div>
     </div>
     <div class="author-list">
@@ -33,16 +33,6 @@ export default {
     AuthorCardSmall,
     SortTypeAuthor
   },
-  props: {
-    keyword: {
-      type: String,
-      default: ''
-    },
-    sortType: {
-      type: String,
-      default: 'Follower'
-    }
-  },
   data () {
     return {
       page: 1,
@@ -50,29 +40,28 @@ export default {
       infiniteId: 0,
       title: '',
       authors: [],
-      responseObj: {}
+      responseObj: {},
+      sortTypeAuthor: 'Follower',
+      keyword: ''
     }
   },
   mounted () {
-    this.sortType = this.$route.query.sort || 'Follower'
-    this.queryUpdated(this.$route.query.keyword, this.sortType)
+    this.sortTypeAuthor = this.$route.query.sort || 'Follower'
+    this.keyword = this.$route.query.keyword || ''
+    this.title = this.keyword
   },
   beforeRouteUpdate (to, from, next) {
-    this.sortType = to.query.sort || 'Follower'
-    this.queryUpdated(to.query.keyword, to.query.sort)
+    this.sortTypeAuthor = to.query.sort || 'Follower'
+    this.keyword = to.query.keyword || ''
+    this.title = this.keyword
     this.authors = []
     this.nextToken = null
     this.page = 0
     this.$refs.infiniteLoading.stateChanger.reset()
+    this.infiniteId += 1
     next()
   },
   methods: {
-    queryUpdated (keyword, sort) {
-      this.keyword = keyword
-      this.title = keyword
-      this.sortType = sort
-      this.infiniteId += 1
-    },
     infiniteHandler ($state) {
       if (this.nextToken) {
         this.nextToken = `"${this.nextToken}"`
@@ -80,7 +69,7 @@ export default {
         $state.complete()
       }
       const AuthorListQuery = `query getUserList {
-        listTweet2rekognitionUsers${this.sortType} (user_screen_name: "${this.keyword}", user_name: "${this.keyword}", user_profile_description: "${this.keyword}", limit: 100, nextToken: ${this.nextToken}) {
+        listTweet2rekognitionUsers${this.sortTypeAuthor} (user_screen_name: "${this.keyword}", user_name: "${this.keyword}", user_profile_description: "${this.keyword}", limit: 100, nextToken: ${this.nextToken}) {
           items {
             user_screen_name
             user_name
@@ -98,9 +87,9 @@ export default {
         API.graphql(graphqlOperation(AuthorListQuery))
           .then((response) => {
             this.page += 1
-            if (this.sortType === 'Follower') {
+            if (this.sortTypeAuthor === 'Follower') {
               this.responseObj = response.data.listTweet2rekognitionUsersFollower
-            } else if (this.sortType === 'Latest') {
+            } else if (this.sortTypeAuthor === 'Latest') {
               this.responseObj = response.data.listTweet2rekognitionUsersLatest
             }
             for (const item of this.responseObj.items) {
@@ -169,7 +158,7 @@ export default {
   font-size: calc(1.5rem + ((1vw - 3.5px) * 0.5096));
 }
 
-.select-sortType {
+.select-sortType-author {
   margin: 0 5px;
 }
 

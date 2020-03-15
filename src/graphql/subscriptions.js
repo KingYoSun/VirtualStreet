@@ -172,3 +172,105 @@ export const onDeleteTweet2rekognitionUser = /* GraphQL */ `
     }
   }
 `;
+export const onCreateTweet2rekognitionRanking = /* GraphQL */ `
+  subscription OnCreateTweet2rekognitionRanking(
+    $div: Int
+    $id: ID
+    $d_RT: Int
+    $d_fav: Int
+    $rate: Int
+  ) {
+    onCreateTweet2rekognitionRanking(
+      div: $div
+      id: $id
+      d_RT: $d_RT
+      d_fav: $d_fav
+      rate: $rate
+    ) {
+      div
+      id
+      d_RT
+      d_fav
+      rate
+      favorite
+      retweet
+      timestamp
+      updated_at_date
+      updated_at_time
+      user_name
+      user_screen_name
+      user_profile_image
+      url
+      text
+      img
+    }
+  }
+`;
+export const onUpdateTweet2rekognitionRanking = /* GraphQL */ `
+  subscription OnUpdateTweet2rekognitionRanking(
+    $div: Int
+    $id: ID
+    $d_RT: Int
+    $d_fav: Int
+    $rate: Int
+  ) {
+    onUpdateTweet2rekognitionRanking(
+      div: $div
+      id: $id
+      d_RT: $d_RT
+      d_fav: $d_fav
+      rate: $rate
+    ) {
+      div
+      id
+      d_RT
+      d_fav
+      rate
+      favorite
+      retweet
+      timestamp
+      updated_at_date
+      updated_at_time
+      user_name
+      user_screen_name
+      user_profile_image
+      url
+      text
+      img
+    }
+  }
+`;
+export const onDeleteTweet2rekognitionRanking = /* GraphQL */ `
+  subscription OnDeleteTweet2rekognitionRanking(
+    $div: Int
+    $id: ID
+    $d_RT: Int
+    $d_fav: Int
+    $rate: Int
+  ) {
+    onDeleteTweet2rekognitionRanking(
+      div: $div
+      id: $id
+      d_RT: $d_RT
+      d_fav: $d_fav
+      rate: $rate
+    ) {
+      div
+      id
+      d_RT
+      d_fav
+      rate
+      favorite
+      retweet
+      timestamp
+      updated_at_date
+      updated_at_time
+      user_name
+      user_screen_name
+      user_profile_image
+      url
+      text
+      img
+    }
+  }
+`;

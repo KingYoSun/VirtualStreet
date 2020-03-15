@@ -75,7 +75,6 @@ export default {
           this.getLatestTweets($state)
           break
       }
-      // this.getRateTweets($state)
     },
     getLatestTweets ($state) {
       try {
@@ -198,49 +197,6 @@ export default {
             }
             this.nextToken = response.data.queryTweet2rekognitionRankingsByDivDFavIndex.nextToken
             if (this.tweets[this.tweets.length - 1].d_Fav === 0 || this.tweets.length >= 100) {
-              $state.complete()
-            } else {
-              $state.loaded()
-            }
-          })
-      } catch (e) {
-        $state.complete()
-      }
-    },
-    getRateTweets ($state) {
-      try {
-        if (this.nextToken) {
-          this.nextToken = `"${this.nextToken}"`
-        }
-        const TweetsListQuery = `query getRateRanking {
-          queryTweet2rekognitionRankingsByDivRateIndex(div: 1, limit: 10, nextToken: ${this.nextToken}){
-            items {
-              id
-              user_name
-              user_screen_name
-              user_profile_image
-              timestamp
-              retweet
-              favorite
-              text
-              img
-              d_RT
-              d_fav
-              rate
-            }
-            nextToken
-          }
-        }`
-        API.graphql(graphqlOperation(TweetsListQuery))
-          .then((response) => {
-            this.page += 1
-            for (const item of response.data.queryTweet2rekognitionRankingsByDivRateIndex.items) {
-              if (this.tweets.find(element => element.id === item.id) === undefined) {
-                this.tweets.push(item)
-              }
-            }
-            this.nextToken = response.data.queryTweet2rekognitionRankingsByDivRateIndex.nextToken
-            if (this.tweets[this.tweets.length - 1].rate === 0 || this.tweets.length >= 100) {
               $state.complete()
             } else {
               $state.loaded()

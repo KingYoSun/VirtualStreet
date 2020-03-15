@@ -106,3 +106,75 @@ export const deleteTweet2rekognitionUser = /* GraphQL */ `
     }
   }
 `;
+export const createTweet2rekognitionRanking = /* GraphQL */ `
+  mutation CreateTweet2rekognitionRanking(
+    $input: CreateTweet2rekognitionRankingInput!
+  ) {
+    createTweet2rekognitionRanking(input: $input) {
+      div
+      id
+      d_RT
+      d_fav
+      rate
+      favorite
+      retweet
+      timestamp
+      updated_at_date
+      updated_at_time
+      user_name
+      user_screen_name
+      user_profile_image
+      url
+      text
+      img
+    }
+  }
+`;
+export const updateTweet2rekognitionRanking = /* GraphQL */ `
+  mutation UpdateTweet2rekognitionRanking(
+    $input: UpdateTweet2rekognitionRankingInput!
+  ) {
+    updateTweet2rekognitionRanking(input: $input) {
+      div
+      id
+      d_RT
+      d_fav
+      rate
+      favorite
+      retweet
+      timestamp
+      updated_at_date
+      updated_at_time
+      user_name
+      user_screen_name
+      user_profile_image
+      url
+      text
+      img
+    }
+  }
+`;
+export const deleteTweet2rekognitionRanking = /* GraphQL */ `
+  mutation DeleteTweet2rekognitionRanking(
+    $input: DeleteTweet2rekognitionRankingInput!
+  ) {
+    deleteTweet2rekognitionRanking(input: $input) {
+      div
+      id
+      d_RT
+      d_fav
+      rate
+      favorite
+      retweet
+      timestamp
+      updated_at_date
+      updated_at_time
+      user_name
+      user_screen_name
+      user_profile_image
+      url
+      text
+      img
+    }
+  }
+`;
