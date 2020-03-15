@@ -80,7 +80,7 @@ export default {
               }
             }
             this.nextToken = response.data.listTweet2rekognitions.nextToken
-            if (this.tweets.length >= 30) {
+            if (this.tweets.length >= 100) {
               $state.complete()
             } else {
               $state.loaded()
@@ -99,6 +99,6 @@ export default {
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-auto-rows: 20px;
+  grid-auto-rows: 80px;
 }
 </style>

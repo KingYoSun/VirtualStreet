@@ -144,7 +144,7 @@ export default {
     setGridSpanResize () {
       const tweetBoxHeight = this.$refs.authorBox.offsetHeight + this.$refs.imagesContainer.offsetHeight + this.$refs.textContainer.offsetHeight + 4
       const tweetContainer = document.getElementById('tweet-container-' + String(this.tweet.id))
-      tweetContainer.setAttribute('style', `height: ${tweetBoxHeight}px;grid-row: span ${Math.ceil(((tweetBoxHeight + 10) / (20 + 10)) + 1)};`)
+      tweetContainer.setAttribute('style', `height: ${tweetBoxHeight}px;grid-row: span ${Math.ceil(((tweetBoxHeight + 10) / (80 + 10)))};`)
     },
     imgAlt (event) {
       event.target.src = 'https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png'
