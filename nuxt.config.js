@@ -34,7 +34,7 @@ export default {
     { src: '~/plugins/amplify.js', mode: 'client' },
     { src: '~/plugins/infiniteloading', mode: 'client' },
     { src: '~/plugins/twitter-text', mode: 'server' },
-    { src: '~/plugins/vue-awesome-swiper', mode: 'client'}
+    { src: '~/plugins/vue-awesome-swiper', mode: 'client' }
   ],
   /*
   ** Nuxt.js dev-modules
