@@ -1,7 +1,7 @@
 <template>
   <div class="hot-container">
     <div v-swiper:mySwiper="swiperOption">
-      <div class="swiper-wrapper">
+      <div ref="swiperWrapper" class="swiper-wrapper">
         <div v-for="(hotTweet, $index) in hotTweets" :id="'hot-tweet-' + hotTweet.id" :key="$index" class="swiper-slide">
           <div class="hot-tweet-wrapper">
             <div class="hot-tweet-container">
@@ -76,6 +76,7 @@ export default {
       nowUnix,
       swiperOption: {
         loop: true,
+        autoHeight: true,
         slidesPerView: 1,
         spaceBetween: 30,
         autoplay: {
@@ -143,6 +144,8 @@ export default {
           for (const item of response.data.queryTweet2rekognitionRankingsByDivRateIndex.items) {
             if (this.hotTweets.find(element => element.id === item.id) === undefined) {
               this.hotTweets.push(item)
+              const elemSwiper = this.$refs.swiperWrapper
+              elemSwiper.setAttribute('style', `'height:${elemSwiper.offsetHeight}px;`)
             }
           }
         })
