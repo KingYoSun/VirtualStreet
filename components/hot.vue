@@ -1,45 +1,53 @@
 <template>
   <div class="hot-container">
-    <div v-for="(hotTweet, $index) in hotTweets" :id="'hot-tweet-' + hotTweet.id" :key="$index">
-      <div class="hot-tweet-wrapper">
-        <div class="hot-tweet-container">
-          <div class="author-info-first-hot">
-            <a class="author-link-image-hot" :href="'https://twitter.com/' + hotTweet.user_screen_name" target="_blank" title="Twitterで見る">
-              <img :src="hotTweet.user_profile_image" class="author-image-hot">
-            </a>
-            <div class="author-name-box">
-              <n-link :to="{ name: 'author-userScreenName', params: { userScreenName: hotTweet.user_screen_name} }" class="author-link-hot" style="display: block">
-                <h1>{{ hotTweet.user_name }}</h1>
-                <h2>@{{ hotTweet.user_screen_name }}</h2>
-              </n-link>
-              <div class="author-info-data-hot">
-                <a :href="'https://twitter.com/' + hotTweet.user_screen_name + '/status/' + hotTweet.id" class="time-lag" target="_blank" title="Twitterで見る">
-                  <h5>{{ calcTimeLag(hotTweet.timestamp) }}</h5>
+    <div v-swiper:mySwiper="swiperOption">
+      <div class="swiper-wrapper">
+        <div v-for="(hotTweet, $index) in hotTweets" :id="'hot-tweet-' + hotTweet.id" :key="$index" class="swiper-slide">
+          <div class="hot-tweet-wrapper">
+            <div class="hot-tweet-container">
+              <div class="author-info-first-hot">
+                <a class="author-link-image-hot" :href="'https://twitter.com/' + hotTweet.user_screen_name" target="_blank" title="Twitterで見る">
+                  <img :src="hotTweet.user_profile_image" class="author-image-hot">
                 </a>
-                <a :href="'https://twitter.com/intent/retweet?tweet_id=' + hotTweet.id" class="retweet-btn" target="_blank" title="リツイートする">
-                  <retweet-icon />
-                  <h5>{{ hotTweet.retweet }}</h5>
-                </a>
-                <a :href="'https://twitter.com/intent/like?tweet_id=' + hotTweet.id" class="favorite-btn" target="_blank" title="いいねする">
-                  <favorite-icon />
-                  <h5>{{ hotTweet.favorite }}</h5>
-                </a>
+                <div class="author-name-box">
+                  <n-link :to="{ name: 'author-userScreenName', params: { userScreenName: hotTweet.user_screen_name} }" class="author-link-hot" style="display: block">
+                    <h1>{{ hotTweet.user_name }}</h1>
+                    <h2>@{{ hotTweet.user_screen_name }}</h2>
+                  </n-link>
+                  <div class="author-info-data-hot">
+                    <a :href="'https://twitter.com/' + hotTweet.user_screen_name + '/status/' + hotTweet.id" class="time-lag" target="_blank" title="Twitterで見る">
+                      <h5>{{ calcTimeLag(hotTweet.timestamp) }}</h5>
+                    </a>
+                    <a :href="'https://twitter.com/intent/retweet?tweet_id=' + hotTweet.id" class="retweet-btn" target="_blank" title="リツイートする">
+                      <retweet-icon />
+                      <h5>{{ hotTweet.retweet }}</h5>
+                    </a>
+                    <a :href="'https://twitter.com/intent/like?tweet_id=' + hotTweet.id" class="favorite-btn" target="_blank" title="いいねする">
+                      <favorite-icon />
+                      <h5>{{ hotTweet.favorite }}</h5>
+                    </a>
+                  </div>
+                </div>
+                <div class="twitter-icon">
+                  <twitter-icon />
+                </div>
+              </div>
+              <div class="text-container-hot">
+                <!-- eslint-disable vue/no-v-html -->
+                <p class="text-hot" v-html="autoLink(hotTweet.text)" />
+                <!--eslint-enable-->
               </div>
             </div>
-            <div class="twitter-icon">
-              <twitter-icon />
-            </div>
-          </div>
-          <div class="text-container-hot">
-            <p class="text-hot" v-html="autoLink(hotTweet.text)" />
+            <a :href="'https://twitter.com/' + hotTweet.user_screen_name + '/status/' + hotTweet.id" target="_blank">
+              <div class="hot-image-container">
+                <img :src="jsonParseImg(hotTweet.img)" style="width: 100%;">
+              </div>
+            </a>
           </div>
         </div>
-        <a :href="'https://twitter.com/' + hotTweet.user_screen_name + '/status/' + hotTweet.id" target="_blank">
-          <div class="hot-image-container">
-            <img :src="jsonParseImg(hotTweet.img)" style="width: 100%;">
-          </div>
-        </a>
       </div>
+      <div slot="button-prev" class="swiper-button-prev" />
+      <div slot="button-next" class="swiper-button-next" />
     </div>
   </div>
 </template>
@@ -47,6 +55,7 @@
 <script>
 import { API, graphqlOperation } from 'aws-amplify'
 import TwitterText from 'twitter-text'
+import 'swiper/css/swiper.css'
 import TwitterIcon from '~/components/parts/tweet/twitterIcon.vue'
 import RetweetIcon from '~/components/parts/tweet/retweetIcon.vue'
 import FavoriteIcon from '~/components/parts/tweet/favoriteIcon.vue'
@@ -64,7 +73,19 @@ export default {
   data () {
     return {
       hotTweets: [],
-      nowUnix
+      nowUnix,
+      swiperOption: {
+        loop: true,
+        slidesPerView: 1,
+        spaceBetween: 30,
+        autoplay: {
+          delay: 8000
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        }
+      }
     }
   },
   mounted () {
@@ -135,9 +156,12 @@ export default {
   padding: 15px;
 }
 
+.swiper-container {
+  box-shadow: 5px 5px 20px var(--border-dark), -5px -5px 20px var(--border-dark);
+}
+
 .hot-tweet-wrapper {
   position: relative;
-  box-shadow: 5px 5px 20px var(--border-dark), -5px -5px 20px var(--border-dark);
 }
 
 .hot-tweet-container {
