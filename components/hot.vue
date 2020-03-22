@@ -47,8 +47,7 @@
           </div>
         </div>
       </div>
-      <div slot="button-prev" class="swiper-button-prev" />
-      <div slot="button-next" class="swiper-button-next" />
+      <div slot="pagination" class="swiper-pagination" />
     </div>
   </div>
 </template>
@@ -83,9 +82,9 @@ export default {
         autoplay: {
           delay: 8000
         },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev'
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true
         }
       }
     }
@@ -157,7 +156,7 @@ export default {
 
 <style>
 .hot-container {
-  padding: 15px;
+  padding: 0 15px 15px 15px;
 }
 
 .hot-container h1{
@@ -215,7 +214,7 @@ export default {
 .author-link-hot h1 {
   font-size: calc(0.875rem + ((1vw - 3.56px) * 0.7033));
   color: var(--text-color-main);
-  width: 20em;
+  width: 15em;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -242,7 +241,7 @@ export default {
 
 .hot-image-container img {
   max-height: 700px;
-  object-fit: cover;
+  object-fit: contain;
   pointer-events: none !important;
 }
 
