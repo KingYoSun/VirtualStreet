@@ -256,4 +256,10 @@ export default {
 .text-hot a:hover{
   color: var(--text-color-sub-hover);
 }
+
+@media screen and (max-width: 850px) {
+  .hot-tweet-container {
+    position: static;
+  }
+}
 </style>
