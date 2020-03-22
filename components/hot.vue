@@ -1,5 +1,6 @@
 <template>
   <div class="hot-container">
+    <h1>Hot Tweet</h1>
     <div v-swiper:mySwiper="swiperOption">
       <div ref="swiperWrapper" class="swiper-wrapper">
         <div v-for="(hotTweet, $index) in hotTweets" :id="'hot-tweet-' + hotTweet.id" :key="$index" class="swiper-slide">
@@ -120,6 +121,7 @@ export default {
       return TwitterText.autoLink(text, { targetBlank: true })
     },
     getRateTweets () {
+      const mySwiper = document.getElementsByClassName('swiper-container')[0].swiper
       const TweetsListQuery = `query getRateRanking {
         queryTweet2rekognitionRankingsByDivRateIndex(div: 1, limit: 5, nextToken: null){
           items {
@@ -144,10 +146,9 @@ export default {
           for (const item of response.data.queryTweet2rekognitionRankingsByDivRateIndex.items) {
             if (this.hotTweets.find(element => element.id === item.id) === undefined) {
               this.hotTweets.push(item)
-              const elemSwiper = this.$refs.swiperWrapper
-              elemSwiper.setAttribute('style', `'height:${elemSwiper.offsetHeight}px;`)
             }
           }
+          mySwiper.updateAutoHeight(8000)
         })
     }
   }
@@ -157,6 +158,10 @@ export default {
 <style>
 .hot-container {
   padding: 15px;
+}
+
+.hot-container h1{
+  color: var(--text-color-main);
 }
 
 .swiper-container {
