@@ -26,10 +26,10 @@ export default {
   },
   head () {
     return {
-      title: this.title,
+      title: this.title + '| VRCSnap!',
       meta: [
         {
-          hid: 'description', name: 'description', content: 'This is Top Page'
+          hid: 'description', name: 'description', content: 'VRCSnap!はTwitterからVRChatのスナップっぽい画像を収集するサイトです'
         }
       ]
     }
