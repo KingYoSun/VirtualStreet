@@ -34,7 +34,8 @@ export default {
     { src: '~/plugins/amplify.js', mode: 'client' },
     { src: '~/plugins/infiniteloading', mode: 'client' },
     { src: '~/plugins/twitter-text', mode: 'server' },
-    { src: '~/plugins/vue-awesome-swiper', mode: 'client' }
+    { src: '~/plugins/vue-awesome-swiper', mode: 'client' },
+    { src: '~/plugins/vue-scrollto', mode: 'server' }
   ],
   /*
   ** Nuxt.js dev-modules
@@ -48,7 +49,8 @@ export default {
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    'vue-scrollto/nuxt'
   ],
   /*
   ** Axios module configuration

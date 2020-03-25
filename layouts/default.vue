@@ -1,19 +1,24 @@
 <template>
-  <div>
+  <div id="anchor">
     <ex-header />
     <div class="wrapper">
       <nuxt />
     </div>
+    <n-link id="page-top" v-scroll-to="'#anchor'" to>
+      <scroll-top-btn />
+    </n-link>
     <ex-footer />
   </div>
 </template>
 
 <script>
+import ScrollTopBtn from '~/components/parts/scrollTopBtn'
 import ExHeader from '~/components/header.vue'
 import ExFooter from '~/components/footer.vue'
 
 export default {
   components: {
+    ScrollTopBtn,
     ExHeader,
     ExFooter
   }
@@ -75,5 +80,19 @@ h3 {
 
 img:hover {
   opacity: 0.7;
+}
+
+#page-top {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  bottom: 30px;
+  right: 90px;
+}
+
+@media screen and (max-width: 1500px) {
+  #page-top {
+    right: 30px;
+  }
 }
 </style>
