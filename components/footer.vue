@@ -19,6 +19,7 @@
   text-align: center;
   background-color: var(--footer-background);
   position: fixed;
+  z-index: 100;
   bottom: 0;
   width: 100%;
 }

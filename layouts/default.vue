@@ -85,6 +85,7 @@ img:hover {
 
 #page-top {
   position: fixed;
+  z-index: 90;
   width: 40px;
   height: 40px;
   bottom: 30px;
