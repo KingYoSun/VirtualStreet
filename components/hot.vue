@@ -268,5 +268,9 @@ export default {
   .hot-tweet-container {
     position: static;
   }
+  .hot-image-container img {
+    max-height: 300px;
+    object-fit: cover;
+  }
 }
 </style>
