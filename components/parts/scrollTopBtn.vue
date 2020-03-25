@@ -8,6 +8,6 @@
 
 <style>
 .st0 {
-  fill: var(--text-color-main);
+  fill: var(--scroll-top-btn);
 }
 </style>
