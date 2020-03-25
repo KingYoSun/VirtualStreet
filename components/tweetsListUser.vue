@@ -37,7 +37,8 @@ export default {
       tweets: [],
       nextToken: null,
       nowUnix,
-      infiniteId: 0
+      infiniteId: 0,
+      userProfileImage: ''
     }
   },
   mounted () {
@@ -72,6 +73,11 @@ export default {
             this.page += 1
             for (const item of response.data.queryTweet2rekognitionsByUserScreenNameTimestampIndex.items) {
               if (this.tweets.find(element => element.id === item.id) === undefined) {
+                if (this.userProfileImage === '') {
+                  this.userProfileImage = item.user_profile_image
+                } else {
+                  item.user_profile_image = this.userProfileImage
+                }
                 this.tweets.push(item)
               }
             }
