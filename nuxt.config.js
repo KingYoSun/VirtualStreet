@@ -17,7 +17,7 @@ export default {
       { hid: 'og:type', property: 'og:type', content: 'website' },
       { hid: 'og:url', property: 'og:url', content: 'https://vrcsnap.com' },
       { hid: 'og:title', property: 'og:title', content: 'VRCSnap' },
-      { hid: 'og:description', property: 'og:description', content: process.env.npm_package_description || 'VRCSnap!はTwitterからVRChatのスナップっぽい画像を収集するサイトです'  },
+      { hid: 'og:description', property: 'og:description', content: process.env.npm_package_description || 'VRCSnap!はTwitterからVRChatのスナップっぽい画像を収集するサイトです'},
       { hid: 'og:image', property: 'og:image', content: 'https://vrcsnap.com/ogp/mainLogo.jpg' },
       { hid: 'twitter:site', name: 'twitter:site', content: '@knotted221' },
       { hid: 'msapplication-TileColor', name: 'msapplication-TileColor', content: '#f3f3f3' },
