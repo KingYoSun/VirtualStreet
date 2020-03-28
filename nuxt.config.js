@@ -49,7 +49,8 @@ export default {
     { src: '~/plugins/infiniteloading', mode: 'client' },
     { src: '~/plugins/twitter-text', mode: 'server' },
     { src: '~/plugins/vue-awesome-swiper', mode: 'client' },
-    { src: '~/plugins/vue-scrollto', mode: 'server' }
+    { src: '~/plugins/vue-scrollto', mode: 'server' },
+    { src: '~/plugins/ga.js', mode: 'client' }
   ],
   /*
   ** Nuxt.js dev-modules
@@ -57,11 +58,11 @@ export default {
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
-    ['@nuxtjs/google-analytics', {
-      id: 'UA-162026733-1',
-      debug: { enabled: true, sendHitTask: true }
-    }]
+    '@nuxtjs/google-analytics'
   ],
+  googleAnalytics: {
+    id: 'UA-162026733-1'
+  },
   /*
   ** Nuxt.js modules
   */
