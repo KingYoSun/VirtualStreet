@@ -26,15 +26,15 @@ export default {
   },
   head () {
     return {
-      title: this.title + '| VRCSnap!',
+      title: 'VRCSnap!',
       meta: [
         { hid: 'description', name: 'description', content: 'VRCSnap!はTwitterからVRChatのスナップっぽい画像を収集するサイトです' },
         { hid: 'og:type', property: 'og:type', content: 'website' },
-        { hid: 'og:title', property: 'og:title', content: this.title + '| VRCSnap!' },
+        { hid: 'og:title', property: 'og:title', content: 'VRCSnap!' },
         { hid: 'og:description', property: 'og:description', content: 'VRCSnap!はTwitterからVRChatのスナップっぽい画像を収集するサイトです' },
         { hid: 'og:url', property: 'og:url', content: 'https://vrcsnap.com' },
         { hid: 'og:image', property: 'og:image', content: 'https://vrcsnap.com/ogp/mainLogo.jpg' },
-        { hid: 'twitter:title', name: 'twitter:title', content: this.title + '| VRCSnap!' },
+        { hid: 'twitter:title', name: 'twitter:title', content: 'VRCSnap!' },
         { hid: 'twitter:description', name: 'twitter:description', content: 'VRCSnap!はTwitterからVRChatのスナップっぽい画像を収集するサイトです' },
         { hid: 'twitter:image', name: 'twitter:image', content: 'https://vrcsnap.com/ogp/mainLogo.jpg' },
         { hid: 'twitter:image:alt', name: 'twitter:image:alt', content: 'VRCSnap' },
