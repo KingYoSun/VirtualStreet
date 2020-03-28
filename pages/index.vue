@@ -38,7 +38,7 @@ export default {
         { hid: 'twitter:description', name: 'twitter:description', content: 'VRCSnap!はTwitterからVRChatのスナップっぽい画像を収集するサイトです' },
         { hid: 'twitter:image', name: 'twitter:image', content: 'https://vrcsnap.com/ogp/mainLogo.jpg' },
         { hid: 'twitter:image:alt', name: 'twitter:image:alt', content: 'VRCSnap' },
-        { hid: 'twitter:card', name: 'twitter:card', content: 'summary_large_image' }
+        { hid: 'twitter:card', name: 'twitter:card', content: 'summary' }
       ]
     }
   },

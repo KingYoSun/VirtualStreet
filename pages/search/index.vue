@@ -119,7 +119,7 @@ export default {
         { hid: 'twitter:description', name: 'twitter:description', content: this.title + 'を含むユーザー | VRCSnap!' },
         { hid: 'twitter:image', name: 'twitter:image', content: 'https://vrcsnap.com/ogp/mainLogo.jpg' },
         { hid: 'twitter:image:alt', name: 'twitter:image:alt', content: this.title + 'を含むユーザー | VRCSnap!' },
-        { hid: 'twitter:card', name: 'twitter:card', content: 'summary_large_image' }
+        { hid: 'twitter:card', name: 'twitter:card', content: 'summary' }
       ]
     }
   }

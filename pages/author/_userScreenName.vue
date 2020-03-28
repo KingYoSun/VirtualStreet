@@ -81,7 +81,7 @@ export default {
         { hid: 'twitter:description', name: 'twitter:description', content: this.title + 'さんのスナップ一覧 | VRCSnap!' },
         { hid: 'twitter:image', name: 'twitter:image', content: this.author.user_profile_image },
         { hid: 'twitter:image:alt', name: 'twitter:image:alt', content: this.title + 'さんのスナップ一覧 | VRCSnap!' },
-        { hid: 'twitter:card', name: 'twitter:card', content: 'summary_large_image' }
+        { hid: 'twitter:card', name: 'twitter:card', content: 'summary' }
       ]
     }
   }
