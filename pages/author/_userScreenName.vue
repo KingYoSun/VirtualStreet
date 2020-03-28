@@ -71,9 +71,17 @@ export default {
     return {
       title: this.title + 'さんのスナップ一覧 | VRCSnap!',
       meta: [
-        {
-          hid: 'description', name: 'description', content: this.title + 'さんのスナップ一覧 | VRCSnap!'
-        }
+        { hid: 'description', name: 'description', content: this.title + 'さんのスナップ一覧 | VRCSnap!' },
+        { hid: 'og:type', property: 'og:type', content: 'article' },
+        { hid: 'og:title', property: 'og:title', content: this.title + 'さんのスナップ一覧 | VRCSnap!' },
+        { hid: 'og:description', property: 'og:description', content: this.title + 'さんのスナップ一覧 | VRCSnap!' },
+        { hid: 'og:url', property: 'og:url', content: `https://vrcsnap.com/author/${this.author.user_screen_name}` },
+        { hid: 'og:image', property: 'og:image', content: this.author.user_profile_image },
+        { hid: 'twitter:title', name: 'twitter:title', content: this.title + 'さんのスナップ一覧 | VRCSnap!' },
+        { hid: 'twitter:description', name: 'twitter:description', content: this.title + 'さんのスナップ一覧 | VRCSnap!' },
+        { hid: 'twitter:image', name: 'twitter:image', content: this.author.user_profile_image },
+        { hid: 'twitter:image:alt', name: 'twitter:image:alt', content: this.title + 'さんのスナップ一覧 | VRCSnap!' },
+        { hid: 'twitter:card', name: 'twitter:card', content: 'summary_large_image' }
       ]
     }
   }

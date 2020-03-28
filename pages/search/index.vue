@@ -109,9 +109,17 @@ export default {
     return {
       title: this.title + 'を含むユーザー | VRCSnap!',
       meta: [
-        {
-          hid: 'description', name: 'description', content: this.title + 'を含むユーザー | VRCSnap!'
-        }
+        { hid: 'description', name: 'description', content: this.title + 'を含むユーザー | VRCSnap!' },
+        { hid: 'og:type', property: 'og:type', content: 'article' },
+        { hid: 'og:title', property: 'og:title', content: this.title + 'を含むユーザー | VRCSnap!' },
+        { hid: 'og:description', property: 'og:description', content: this.title + 'を含むユーザー | VRCSnap!' },
+        { hid: 'og:url', property: 'og:url', content: `https://vrcsnap.com/search?keyword=${this.title}` },
+        { hid: 'og:image', property: 'og:image', content: 'https://vrcsnap.com/ogp/mainLogo.jpg' },
+        { hid: 'twitter:title', name: 'twitter:title', content: this.title + 'を含むユーザー | VRCSnap!' },
+        { hid: 'twitter:description', name: 'twitter:description', content: this.title + 'を含むユーザー | VRCSnap!' },
+        { hid: 'twitter:image', name: 'twitter:image', content: 'https://vrcsnap.com/ogp/mainLogo.jpg' },
+        { hid: 'twitter:image:alt', name: 'twitter:image:alt', content: this.title + 'を含むユーザー | VRCSnap!' },
+        { hid: 'twitter:card', name: 'twitter:card', content: 'summary_large_image' }
       ]
     }
   }
