@@ -1,4 +1,3 @@
-
 export default {
   mode: 'universal',
   /*
@@ -65,8 +64,16 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    'vue-scrollto/nuxt'
+    'vue-scrollto/nuxt',
+    '@nuxtjs/sitemap'
   ],
+  sitemap: {
+    path: '/sitemap.xml',
+    hostname: 'https://vrcsnap.com',
+    cacheTime: 1000 * 60 * 15,
+    gzip: true,
+    generate: true
+  },
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
