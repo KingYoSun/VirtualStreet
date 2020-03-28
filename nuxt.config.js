@@ -65,10 +65,13 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     'vue-scrollto/nuxt',
-    '@nuxtjs/sitemap',
-    ['@nuxtjs/google-analytics', {
-      id: 'UA-162026733-1'
-    }]
+    [
+      '@nuxtjs/google-gtag',
+      {
+        id: 'UA-162026733-1', //あなたのGoogleアナリティクスのプロパティID
+      }
+    ],
+    '@nuxtjs/sitemap'
   ],
   sitemap: {
     path: '/sitemap.xml',
