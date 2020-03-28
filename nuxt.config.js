@@ -49,8 +49,7 @@ export default {
     { src: '~/plugins/infiniteloading', mode: 'client' },
     { src: '~/plugins/twitter-text', mode: 'server' },
     { src: '~/plugins/vue-awesome-swiper', mode: 'client' },
-    { src: '~/plugins/vue-scrollto', mode: 'server' },
-    { src: '~/plugins/ga.js', mode: 'client' }
+    { src: '~/plugins/vue-scrollto', mode: 'server' }
   ],
   /*
   ** Nuxt.js dev-modules
@@ -66,7 +65,10 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     'vue-scrollto/nuxt',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    ['@nuxtjs/google-analytics', {
+      id: 'UA-162026733-1'
+    }]
   ],
   sitemap: {
     path: '/sitemap.xml',
