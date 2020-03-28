@@ -65,6 +65,9 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     'vue-scrollto/nuxt',
+    ['@nuxtjs/google-analytics', {
+      id: 'UA-162026733-1'
+    }],
     '@nuxtjs/sitemap'
   ],
   sitemap: {
