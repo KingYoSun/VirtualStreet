@@ -68,7 +68,7 @@ export default {
     [
       '@nuxtjs/google-gtag',
       {
-        id: 'UA-162026733-1', //あなたのGoogleアナリティクスのプロパティID
+        id: 'UA-162026733-1'
       }
     ],
     '@nuxtjs/sitemap'
