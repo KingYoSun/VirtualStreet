@@ -59,7 +59,7 @@ export default {
     '@nuxtjs/eslint-module',
     ['@nuxtjs/google-analytics', {
       id: 'UA-162026733-1',
-      debug: { sendHitTask: true }
+      debug: { enabled: true, sendHitTask: true }
     }]
   ],
   /*
