@@ -59,7 +59,7 @@ export default {
     '@nuxtjs/eslint-module',
     ['@nuxtjs/google-analytics', {
       id: 'UA-162026733-1'
-    }],
+    }]
   ],
   /*
   ** Nuxt.js modules
