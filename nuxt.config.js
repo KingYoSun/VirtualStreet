@@ -56,7 +56,10 @@ export default {
   */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
+    ['@nuxtjs/google-analytics', {
+      id: 'UA-162026733-1'
+    }],
   ],
   /*
   ** Nuxt.js modules
@@ -65,9 +68,6 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     'vue-scrollto/nuxt',
-    ['@nuxtjs/google-analytics', {
-      id: 'UA-162026733-1'
-    }],
     '@nuxtjs/sitemap'
   ],
   sitemap: {
