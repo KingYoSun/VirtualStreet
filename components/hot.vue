@@ -90,7 +90,9 @@ export default {
     }
   },
   mounted () {
-    this.getRateTweets()
+    if (!$device.isMobile) {
+      this.getRateTweets()
+    }
   },
   methods: {
     jsonParseImg (str) {

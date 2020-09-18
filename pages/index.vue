@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div>
+    <div v-if="!$device.isMobile">
       <hot-tweets ref="hotTweets" />
     </div>
     <div>

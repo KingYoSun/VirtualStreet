@@ -40,12 +40,18 @@ export default {
   data () {
     return {
       page: 1,
+      tweetPerPage: 10,
       tweets: [],
       nextToken: null,
       searchDay: todayUnix,
       nowUnix,
       infiniteId: 0,
       sortType: 'Latest'
+    }
+  },
+  created () {
+    if (this.$device.isMobile) {
+      this.tweetPerPage = 3
     }
   },
   mounted () {
@@ -86,7 +92,7 @@ export default {
           $state.complete()
         }
         const TweetsListQuery = `query list {
-          listTweet2rekognitions(updated_at_date: ${this.searchDay}, limit: 10, nextToken: ${this.nextToken}) {
+          listTweet2rekognitions(updated_at_date: ${this.searchDay}, limit: ${this.tweetPerPage}, nextToken: ${this.nextToken}) {
             items {
               id
               user_name

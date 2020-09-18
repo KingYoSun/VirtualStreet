@@ -1,5 +1,5 @@
 export default {
-  mode: 'universal',
+  ssr: true,
   /*
   ** Headers of the page
   */
@@ -26,7 +26,7 @@ export default {
       { hid: 'application-name', name: 'application-name', content: 'VRCSnap' }
     ],
     script: [
-      { src: 'https://platform.twitter.com/widgets.js' }
+      { src: 'https://platform.twitter.com/widgets.js', body: true }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -65,6 +65,7 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     'vue-scrollto/nuxt',
+    '@nuxtjs/device',
     [
       '@nuxtjs/google-gtag',
       {
@@ -77,8 +78,7 @@ export default {
     path: '/sitemap.xml',
     hostname: 'https://vrcsnap.com',
     cacheTime: 1000 * 60 * 15,
-    gzip: true,
-    generate: true
+    gzip: true
   },
   /*
   ** Axios module configuration
