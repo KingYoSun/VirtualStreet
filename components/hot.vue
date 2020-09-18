@@ -53,7 +53,7 @@
 </template>
 
 <script>
-import { API, graphqlOperation } from 'aws-amplify'
+import API, { graphqlOperation } from '@aws-amplify/api'
 import TwitterText from 'twitter-text'
 import 'swiper/css/swiper.css'
 import TwitterIcon from '~/components/parts/tweet/twitterIcon.vue'

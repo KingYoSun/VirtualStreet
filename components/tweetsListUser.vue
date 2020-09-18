@@ -13,7 +13,7 @@
 
 <script>
 import InfiniteLoading from 'vue-infinite-loading'
-import { API, graphqlOperation } from 'aws-amplify'
+import API, { graphqlOperation } from '@aws-amplify/api'
 import EmbedTweet from '~/components/parts/tweet.vue'
 
 const date = new Date()

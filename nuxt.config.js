@@ -7,7 +7,7 @@ export default {
     htmlAttrs: {
       prefix: 'og: http://ogp.me/ns#'
     },
-    title: process.env.npm_package_name || 'vrcsnap',
+    title: 'VRCSnap!',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -93,6 +93,7 @@ export default {
     /*
     ** You can extend webpack config here
     */
+    analyze: true,
     extend (config, ctx) {
     }
   }

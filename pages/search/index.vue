@@ -21,7 +21,7 @@
 
 <script>
 import InfiniteLoading from 'vue-infinite-loading'
-import { API, graphqlOperation } from 'aws-amplify'
+import API, { graphqlOperation } from '@aws-amplify/api'
 import AuthorCardSmall from '~/components/parts/author/authorCardSmall.vue'
 import SortTypeAuthor from '~/components/parts/author/sortTypeAuthor.vue'
 

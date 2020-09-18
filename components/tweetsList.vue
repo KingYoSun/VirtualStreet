@@ -16,7 +16,7 @@
 
 <script>
 import InfiniteLoading from 'vue-infinite-loading'
-import { API, graphqlOperation } from 'aws-amplify'
+import API, { graphqlOperation } from '@aws-amplify/api'
 import EmbedTweet from '~/components/parts/tweet.vue'
 import SortTypeTweets from '~/components/parts/sortTypeTweets.vue'
 

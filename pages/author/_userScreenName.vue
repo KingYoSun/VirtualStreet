@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { API, graphqlOperation } from 'aws-amplify'
+import API, { graphqlOperation } from '@aws-amplify/api'
 import AuthorCardBig from '~/components/parts/author/authorCardBig.vue'
 import TweetsListUser from '~/components/tweetsListUser.vue'
 
