@@ -63,7 +63,7 @@ export default {
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios',
+    // '@nuxtjs/axios',
     'vue-scrollto/nuxt',
     '@nuxtjs/device',
     [
@@ -93,7 +93,7 @@ export default {
     /*
     ** You can extend webpack config here
     */
-    analyze: true,
+    // analyze: true,
     extend (config, ctx) {
     }
   }
