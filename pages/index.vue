@@ -26,16 +26,16 @@ export default {
   },
   head () {
     return {
-      title: 'VRCSnap!',
+      title: 'VRCSnap! - VRChatの自撮りツイート収集サイト',
       meta: [
-        { hid: 'description', name: 'description', content: 'VRCSnap!はTwitterからVRChatのスナップっぽい画像を収集するサイトです' },
+        { hid: 'description', name: 'description', content: 'VRCSnap!はTwitterからVRChatの自撮りっぽい画像を収集するサイトです' },
         { hid: 'og:type', property: 'og:type', content: 'website' },
         { hid: 'og:title', property: 'og:title', content: 'VRCSnap!' },
-        { hid: 'og:description', property: 'og:description', content: 'VRCSnap!はTwitterからVRChatのスナップっぽい画像を収集するサイトです' },
+        { hid: 'og:description', property: 'og:description', content: 'VRCSnap!はTwitterからVRChatの自撮りっぽい画像を収集するサイトです' },
         { hid: 'og:url', property: 'og:url', content: 'https://vrcsnap.com' },
         { hid: 'og:image', property: 'og:image', content: 'https://vrcsnap.com/ogp/mainLogo.jpg' },
         { hid: 'twitter:title', name: 'twitter:title', content: 'VRCSnap!' },
-        { hid: 'twitter:description', name: 'twitter:description', content: 'VRCSnap!はTwitterからVRChatのスナップっぽい画像を収集するサイトです' },
+        { hid: 'twitter:description', name: 'twitter:description', content: 'VRCSnap!はTwitterからVRChatの自撮りっぽい画像を収集するサイトです' },
         { hid: 'twitter:image', name: 'twitter:image', content: 'https://vrcsnap.com/ogp/mainLogo.jpg' },
         { hid: 'twitter:image:alt', name: 'twitter:image:alt', content: 'VRCSnap' },
         { hid: 'twitter:card', name: 'twitter:card', content: 'summary' }

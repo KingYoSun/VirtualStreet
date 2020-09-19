@@ -107,18 +107,18 @@ export default {
   },
   head () {
     return {
-      title: this.title + 'を含むユーザー | VRCSnap!',
+      title: this.title + 'を含むユーザー | VRCSnap!- VRChatの自撮りツイート収集サイト',
       meta: [
-        { hid: 'description', name: 'description', content: '「' + this.$route.query.keyword + '」を含むユーザー一覧 | VRCSnap!' },
+        { hid: 'description', name: 'description', content: '「' + this.$route.query.keyword + '」を含むユーザー一覧 | VRCSnap! - VRChatの自撮りツイート収集サイト' },
         { hid: 'og:type', property: 'og:type', content: 'article' },
-        { hid: 'og:title', property: 'og:title', content: '「' + this.$route.query.keyword + '」を含むユーザー一覧 | VRCSnap!' },
-        { hid: 'og:description', property: 'og:description', content: '「' + this.$route.query.keyword + '」を含むユーザー一覧 | VRCSnap!' },
+        { hid: 'og:title', property: 'og:title', content: '「' + this.$route.query.keyword + '」を含むユーザー一覧 | VRCSnap! - VRChatの自撮りツイート収集サイト' },
+        { hid: 'og:description', property: 'og:description', content: '「' + this.$route.query.keyword + '」を含むユーザー一覧 | VRCSnap! - VRChatの自撮りツイート収集サイト' },
         { hid: 'og:url', property: 'og:url', content: `https://vrcsnap.com/search?keyword=${this.$route.query.keyword}` },
         { hid: 'og:image', property: 'og:image', content: 'https://vrcsnap.com/ogp/mainLogo.jpg' },
-        { hid: 'twitter:title', name: 'twitter:title', content: '「' + this.$route.query.keyword + '」を含むユーザー一覧 | VRCSnap!' },
-        { hid: 'twitter:description', name: 'twitter:description', content: '「' + this.$route.query.keyword + '」を含むユーザー一覧 | VRCSnap!' },
+        { hid: 'twitter:title', name: 'twitter:title', content: '「' + this.$route.query.keyword + '」を含むユーザー一覧 | VRCSnap! - VRChatの自撮りツイート収集サイト' },
+        { hid: 'twitter:description', name: 'twitter:description', content: '「' + this.$route.query.keyword + '」を含むユーザー一覧 | VRCSnap! - VRChatの自撮りツイート収集サイト' },
         { hid: 'twitter:image', name: 'twitter:image', content: 'https://vrcsnap.com/ogp/mainLogo.jpg' },
-        { hid: 'twitter:image:alt', name: 'twitter:image:alt', content: '「' + this.$route.query.keyword + '」を含むユーザー一覧 | VRCSnap!' },
+        { hid: 'twitter:image:alt', name: 'twitter:image:alt', content: '「' + this.$route.query.keyword + '」を含むユーザー一覧 | VRCSnap! - VRChatの自撮りツイート収集サイト' },
         { hid: 'twitter:card', name: 'twitter:card', content: 'summary' }
       ]
     }

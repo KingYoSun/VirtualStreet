@@ -69,18 +69,18 @@ export default {
   },
   head () {
     return {
-      title: this.title + 'さんのスナップ一覧 | VRCSnap!',
+      title: this.title + 'さんのスナップ一覧 | VRCSnap! - VRChatの自撮りツイート収集サイト',
       meta: [
-        { hid: 'description', name: 'description', content: '@' + this.$route.params.userScreenName + 'さんのスナップ一覧 | VRCSnap!' },
+        { hid: 'description', name: 'description', content: '@' + this.$route.params.userScreenName + 'さんのスナップ一覧 | VRCSnap! - VRChatの自撮りツイート収集サイト' },
         { hid: 'og:type', property: 'og:type', content: 'article' },
-        { hid: 'og:title', property: 'og:title', content: '@' + this.$route.params.userScreenName + 'さんのスナップ一覧 | VRCSnap!' },
-        { hid: 'og:description', property: 'og:description', content: '@' + this.$route.params.userScreenName + 'さんのスナップ一覧 | VRCSnap!' },
+        { hid: 'og:title', property: 'og:title', content: '@' + this.$route.params.userScreenName + 'さんのスナップ一覧 | VRCSnap! - VRChatの自撮りツイート収集サイト' },
+        { hid: 'og:description', property: 'og:description', content: '@' + this.$route.params.userScreenName + 'さんのスナップ一覧 | VRCSnap! - VRChatの自撮りツイート収集サイト' },
         { hid: 'og:url', property: 'og:url', content: `https://vrcsnap.com/author/${this.$route.params.userScreenName}` },
         { hid: 'og:image', property: 'og:image', content: 'https://vrcsnap.com/ogp/mainLogo.jpg' },
-        { hid: 'twitter:title', name: 'twitter:title', content: '@' + this.$route.params.userScreenName + 'さんのスナップ一覧 | VRCSnap!' },
-        { hid: 'twitter:description', name: 'twitter:description', content: '@' + this.$route.params.userScreenName + 'さんのスナップ一覧 | VRCSnap!' },
+        { hid: 'twitter:title', name: 'twitter:title', content: '@' + this.$route.params.userScreenName + 'さんのスナップ一覧 | VRCSnap! - VRChatの自撮りツイート収集サイト' },
+        { hid: 'twitter:description', name: 'twitter:description', content: '@' + this.$route.params.userScreenName + 'さんのスナップ一覧 | VRCSnap! - VRChatの自撮りツイート収集サイト' },
         { hid: 'twitter:image', name: 'twitter:image', content: 'https://vrcsnap.com/ogp/mainLogo.jpg' },
-        { hid: 'twitter:image:alt', name: 'twitter:image:alt', content: '@' + this.$route.params.userScreenName + 'さんのスナップ一覧 | VRCSnap!' },
+        { hid: 'twitter:image:alt', name: 'twitter:image:alt', content: '@' + this.$route.params.userScreenName + 'さんのスナップ一覧 | VRCSnap! - VRChatの自撮りツイート収集サイト' },
         { hid: 'twitter:card', name: 'twitter:card', content: 'summary' }
       ]
     }
